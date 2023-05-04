@@ -6,7 +6,7 @@ This library contains common code lists for use in Altinn 3 based applications.
    Open command line to the repo of your application and navigate to the App folder where the App.csproj file is located and run the following command:
 
    ```shell
-   nuget install Altinn.Codelists
+   dotnet add package Altinn.Codelists
    ```
 2. Register the codelists in your app DI container  
    Add the following to your Program.cs file:
