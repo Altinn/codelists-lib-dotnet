@@ -1,6 +1,7 @@
 ﻿using Altinn.App.Core.Features;
 using Altinn.App.Core.Models;
 using Altinn.Codelists.SSB.Models;
+using System.Linq;
 
 namespace Altinn.Codelists.SSB;
 
@@ -66,6 +67,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         string parentCode = mergedKeyValuePairs.GetValueOrDefault("parentCode") ?? string.Empty;
 
         AppOptions appOptions = GetAppOptions(classificationCode, parentCode);
+        appOptions.Parameters = new Dictionary<string, string>(mergedKeyValuePairs);
 
         return appOptions;
     }
