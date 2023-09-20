@@ -68,6 +68,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         string parentCode = mergedKeyValuePairs.GetValueOrDefault("parentCode") ?? string.Empty;
 
         AppOptions appOptions = GetAppOptions(classificationCode, parentCode);
+        appOptions.Parameters = new Dictionary<string, string>(mergedKeyValuePairs);
 
         return appOptions;
     }
