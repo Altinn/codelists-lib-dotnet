@@ -72,12 +72,12 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
 
         // Parameters used added to Parameters collection in AppOptions for reference and documentation purposes.
         // Add well known parameters first.
-        appOptions.Parameters.Add("id", _classificationId.ToString());
-        appOptions.Parameters.Add("variant", variant);
-        appOptions.Parameters.Add("date", dateOnly.ToString());
-        appOptions.Parameters.Add("language", language);
-        appOptions.Parameters.Add("level", level);
-        appOptions.Parameters.Add("parentCode", parentCode);
+        appOptions.Parameters.TryAdd("id", _classificationId.ToString());
+        appOptions.Parameters.TryAdd("variant", variant);
+        appOptions.Parameters.TryAdd("date", dateOnly.ToString());
+        appOptions.Parameters.TryAdd("language", language);
+        appOptions.Parameters.TryAdd("level", level);
+        appOptions.Parameters.TryAdd("parentCode", parentCode);
 
         // Add any other parameters.
         List<string> knownKeys = new () { "id", "variant", "date", "language", "level", "parentCode" };
@@ -85,7 +85,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         {
             if (!knownKeys.Contains(keyValuePair.Key))
             {
-                appOptions.Parameters.Add(keyValuePair.Key, keyValuePair.Value);
+                appOptions.Parameters.TryAdd(keyValuePair.Key, keyValuePair.Value);
             }
         }
 
