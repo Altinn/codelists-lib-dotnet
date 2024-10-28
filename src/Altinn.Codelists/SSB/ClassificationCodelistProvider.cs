@@ -130,7 +130,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
     }
     private static AppOptions SortAppOptions(AppOptions appOptions, string orderBy,string orderByDesc,string selectCodes)
     {
-        if ((string.IsNullOrEmpty(orderBy) & string.IsNullOrEmpty(orderByDesc)) ||  appOptions?.Options == null || !appOptions.Options.Any())
+        if ((string.IsNullOrEmpty(orderBy) && string.IsNullOrEmpty(orderByDesc)) ||  appOptions?.Options == null || !appOptions.Options.Any())
         {
             return appOptions ?? new AppOptions();
         }
@@ -149,13 +149,13 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
             return appOptions;
         }
 
-        if (!string.IsNullOrEmpty(orderBy) && orderMappings.ContainsKey(orderBy))
+        if (!string.IsNullOrEmpty(orderBy) && orderMappings.TryGetValue(orderBy, out Func<AppOption, object>? orderMapping) && orderMapping != null)
         {
-            appOptions.Options = appOptions.Options.OrderBy(orderMappings[orderBy]).ToList();
+            appOptions.Options = appOptions.Options.OrderBy(orderMapping).ToList();
         }
-        else if (!string.IsNullOrEmpty(orderByDesc) && orderMappings.ContainsKey(orderByDesc))
+        else if (!string.IsNullOrEmpty(orderByDesc) && orderMappings.TryGetValue(orderByDesc, out Func<AppOption, object>? orderMappingDesc) && orderMappingDesc != null)
         {
-            appOptions.Options = appOptions.Options.OrderByDescending(orderMappings[orderByDesc]).ToList();
+            appOptions.Options = appOptions.Options.OrderByDescending(orderMappingDesc).ToList();
         }
        
         
