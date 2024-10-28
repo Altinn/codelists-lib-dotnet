@@ -128,7 +128,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
 
         return mergedDictionary;
     }
-    private AppOptions SortAppOptions(AppOptions appOptions, string orderBy,string orderByDesc,string selectCodes)
+    private static AppOptions SortAppOptions(AppOptions appOptions, string orderBy,string orderByDesc,string selectCodes)
     {
         if ((string.IsNullOrEmpty(orderBy) & string.IsNullOrEmpty(orderByDesc)) ||  appOptions?.Options == null || !appOptions.Options.Any())
         {
