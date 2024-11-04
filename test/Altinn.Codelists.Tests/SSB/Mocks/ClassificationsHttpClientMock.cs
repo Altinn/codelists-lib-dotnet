@@ -66,7 +66,7 @@ public class ClassificationsHttpClientMock : IClassificationsClient
             .When("http://data.ssb.no/api/klass/v1/classifications/74/variantAt*")
             .Respond("application/json", EmbeddedResource.LoadDataAsString(SMALL_GAME_VARIANT_TESTDATA_RESOURCE).Result);
 
-         HttpMessageHandlerMock
+        HttpMessageHandlerMock
             .When("http://data.ssb.no/api/klass/v1/classifications/303/*")
             .Respond("application/json", EmbeddedResource.LoadDataAsString(UNITS_TESTDATA_RESOURCE).Result);
 
