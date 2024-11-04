@@ -21,6 +21,6 @@ public class UnitsCodelistProviderTests
 
         appOptions.Options.Should().HaveCount(7);
         appOptions.Options.First().Label.Should().Be("kilogram");
-        appOptions.Options.Last().Description.Should().Be("stykk");
+        appOptions.Options.Last().Label.Should().Be("stykk");
     }
 }
