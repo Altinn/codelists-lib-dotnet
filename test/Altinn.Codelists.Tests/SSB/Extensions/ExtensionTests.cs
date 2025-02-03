@@ -1,30 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Altinn.App.Core.Features;
 using Altinn.Codelists.SSB;
 using Altinn.Codelists.SSB.Extensions;
 using Altinn.Codelists.SSB.Models;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Altinn.Codelists.Tests.SSB.Extensions
+namespace Altinn.Codelists.Tests.SSB.Extensions;
+
+public class ExtensionTests
 {
-    public class ExtensionTests
+    [Fact]
+    public void AddSSBClassifications()
     {
-        [Fact]
-        public void AddSSBClassifications()
-        {
-            IServiceCollection services = new ServiceCollection();
-            services.AddSSBClassificationCodelistProvider("sivilstand", Classification.MaritalStatus);
-            services.AddSSBClassificationCodelistProvider("yrker", Classification.Occupations);
+        IServiceCollection services = new ServiceCollection();
+        services.AddSSBClassificationCodelistProvider("sivilstand", Classification.MaritalStatus);
+        services.AddSSBClassificationCodelistProvider("yrker", Classification.Occupations);
 
-            IServiceProvider serviceProvider = services.BuildServiceProvider();
+        IServiceProvider serviceProvider = services.BuildServiceProvider();
 
-            IEnumerable<IClassificationsClient> classificationsClients =
-                serviceProvider.GetServices<IClassificationsClient>();
+        IEnumerable<IClassificationsClient> classificationsClients =
+            serviceProvider.GetServices<IClassificationsClient>();
 
-            classificationsClients.Should().HaveCount(1);
-        }
+        classificationsClients.Should().HaveCount(1);
+
+        var optionsProviders = serviceProvider.GetServices<IAppOptionsProvider>();
+        optionsProviders.Should().HaveCount(2);
     }
 }

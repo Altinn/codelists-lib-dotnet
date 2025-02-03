@@ -16,6 +16,7 @@ public class MunicipalitiesCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(356);
         appOptions.Options.First(x => x.Value == "4640").Label.Should().Be("Sogndal");
         appOptions.Options.First(x => x.Value == "1813").Label.Should().Be("Brønnøy");
@@ -34,6 +35,7 @@ public class MunicipalitiesCodelistProviderTests
             new Dictionary<string, string>() { { "fnr", "46" } }
         );
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(43);
         appOptions.Options.First(x => x.Value == "4640").Label.Should().Be("Sogndal");
         appOptions.Options.FirstOrDefault(x => x.Value == "1813").Should().BeNull();

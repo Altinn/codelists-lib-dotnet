@@ -23,7 +23,7 @@ public class MunicipalitiesCodelistProvider : IAppOptionsProvider
     }
 
     /// <inheritdoc/>
-    public async Task<AppOptions> GetAppOptionsAsync(string language, Dictionary<string, string> keyValuePairs)
+    public async Task<AppOptions> GetAppOptionsAsync(string? language, Dictionary<string, string> keyValuePairs)
     {
         bool hasCountyParam = keyValuePairs.TryGetValue("fnr", out string? countyNumber);
 
@@ -37,8 +37,8 @@ public class MunicipalitiesCodelistProvider : IAppOptionsProvider
             Options = municipalities.Select(x => new AppOption() { Value = x.Number, Label = x.Name }).ToList(),
             Parameters =
                 hasCountyParam && countyNumber != null
-                    ? new Dictionary<string, string>() { { "fnr", countyNumber } }
-                    : new Dictionary<string, string>(),
+                    ? new Dictionary<string, string?>() { { "fnr", countyNumber } }
+                    : new Dictionary<string, string?>(),
         };
 
         return appOptions;

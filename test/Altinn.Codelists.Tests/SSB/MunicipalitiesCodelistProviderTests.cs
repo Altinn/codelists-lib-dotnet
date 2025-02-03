@@ -20,6 +20,7 @@ public class MunicipalitiesCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(357);
         appOptions.Options.First(x => x.Value == "4640").Label.Should().Be("Sogndal");
     }

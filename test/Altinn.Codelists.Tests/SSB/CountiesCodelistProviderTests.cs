@@ -20,6 +20,7 @@ public class CountiesCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(12);
         appOptions.Options.First(x => x.Value == "46").Label.Should().Be("Vestland");
     }

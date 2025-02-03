@@ -2,19 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <PackageTags>Altinn;Studio;App;Core</PackageTags>
+    <Description>
+      This class library holds extra codelists for an Altinn 3 app.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="RestCountries\Data\countries.json" />
+
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>$(AssemblyName).Tests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
   <ItemGroup>
 		<!-- This defines the minimum required version of Altinn.App.Core and should not be bumped unless new features require it.-->
-    <PackageReference Include="Altinn.App.Core" Version="7.14.0" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="7.0.0" />
-    <PackageReference Include="Scrutor" Version="4.2.2" />
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>$(AssemblyName).Tests</_Parameter1>
-    </AssemblyAttribute>
+    <PackageReference Include="Altinn.App.Core" Version="8.0.0" />
   </ItemGroup>
 </Project>

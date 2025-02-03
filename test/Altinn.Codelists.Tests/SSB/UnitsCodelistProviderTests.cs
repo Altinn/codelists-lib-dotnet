@@ -25,6 +25,7 @@ public class UnitsCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(7);
         appOptions.Options.First().Label.Should().Be("kilogram");
         appOptions.Options.Last().Label.Should().Be("stykk");

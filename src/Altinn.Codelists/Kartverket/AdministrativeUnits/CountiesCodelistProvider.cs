@@ -22,7 +22,7 @@ public class CountiesCodelistProvider : IAppOptionsProvider
     }
 
     /// <inheritdoc/>
-    public async Task<AppOptions> GetAppOptionsAsync(string language, Dictionary<string, string> keyValuePairs)
+    public async Task<AppOptions> GetAppOptionsAsync(string? language, Dictionary<string, string> keyValuePairs)
     {
         var counties = await _countiesHttpClient.GetCounties();
 

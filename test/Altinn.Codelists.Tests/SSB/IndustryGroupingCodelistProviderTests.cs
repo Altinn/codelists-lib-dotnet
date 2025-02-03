@@ -20,6 +20,7 @@ public class IndustryGroupingCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(1811);
         appOptions.Options.First(x => x.Value == "A").Label.Should().Be("Jordbruk, skogbruk og fiske");
         appOptions
@@ -44,6 +45,7 @@ public class IndustryGroupingCodelistProviderTests
             new Dictionary<string, string>() { { "level", "1" } }
         );
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(21);
         appOptions.Options.First(x => x.Value == "A").Label.Should().Be("Jordbruk, skogbruk og fiske");
         appOptions.Parameters.First(x => x.Key == "level").Value.Should().Be("1");
@@ -62,6 +64,7 @@ public class IndustryGroupingCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(21);
         appOptions.Options.First(x => x.Value == "A").Label.Should().Be("Jordbruk, skogbruk og fiske");
         appOptions.Parameters.First(x => x.Key == "language").Value.Should().Be("nb");

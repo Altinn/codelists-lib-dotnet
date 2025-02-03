@@ -20,6 +20,7 @@ public class OccupationsCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(582);
         appOptions.Options.First(x => x.Value == "2").Label.Should().Be("Akademiske yrker");
         appOptions.Options.First(x => x.Value == "25").Label.Should().Be("IKT-rådgivere");
@@ -45,6 +46,7 @@ public class OccupationsCodelistProviderTests
             new Dictionary<string, string>() { { "level", "1" } }
         );
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(10);
         appOptions.Options.First(x => x.Value == "0").Label.Should().Be("Militære yrker og uoppgitt");
     }
@@ -62,6 +64,7 @@ public class OccupationsCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(21);
         appOptions.Options.First(x => x.Value == "A").Label.Should().Be("Jordbruk, skogbruk og fiske");
     }

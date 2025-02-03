@@ -20,6 +20,7 @@ public class MaritalStatusCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(9);
         appOptions.Options.First(x => x.Value == "2").Label.Should().Be("Gift");
     }

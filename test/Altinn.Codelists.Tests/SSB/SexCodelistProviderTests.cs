@@ -20,6 +20,7 @@ public class SexCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(2);
         appOptions.Options.First(x => x.Value == "2").Label.Should().Be("Kvinne");
     }
@@ -32,6 +33,7 @@ public class SexCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(2);
         appOptions.Options.First(x => x.Value == "1").Label.Should().Be("Mann");
     }

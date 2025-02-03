@@ -66,7 +66,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
     public string Id { get; private set; }
 
     /// Gets the <see cref="AppOptions"/> based on the provided classification, options id and key value pairs.
-    public async Task<AppOptions> GetAppOptionsAsync(string language, Dictionary<string, string> keyValuePairs)
+    public async Task<AppOptions> GetAppOptionsAsync(string? language, Dictionary<string, string> keyValuePairs)
     {
         Dictionary<string, string> mergedKeyValuePairs = MergeDictionaries(_defaultKeyValuePairs, keyValuePairs);
 
@@ -81,7 +81,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
 
         var classificationCode = await _classificationsClient.GetClassificationCodes(
             _classificationId,
-            language,
+            language ?? "nb",
             dateOnly,
             level,
             variant,
@@ -93,7 +93,9 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         AppOptions appOptions = GetAppOptions(classificationCode, parentCode);
         //Sorterings funksjon
         appOptions = SortAppOptions(appOptions, orderBy, orderByDesc, selectCodes);
-        appOptions.Parameters = new Dictionary<string, string>(mergedKeyValuePairs);
+#pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
+        appOptions.Parameters = new Dictionary<string, string?>(mergedKeyValuePairs);
+#pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
 
         // Parameters used added to Parameters collection in AppOptions for reference and documentation purposes.
         // Add well known parameters first.
@@ -189,7 +191,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         var orderMappings = new Dictionary<string, Func<AppOption, object>>
         {
             { "name", x => x.Label },
-            { "code", x => x.Value },
+            { "code", x => x.Value ?? string.Empty },
             { "description", x => x.Description ?? string.Empty },
             { "helpText", x => x.HelpText ?? string.Empty },
         };
@@ -197,7 +199,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         if (orderBy == "selectCodes" && !string.IsNullOrEmpty(selectCodes))
         {
             appOptions.Options = appOptions
-                .Options.OrderBy(x => selectCodes.IndexOf(x.Value, StringComparison.Ordinal))
+                .Options.OrderBy(x => selectCodes.IndexOf(x.Value ?? string.Empty, StringComparison.Ordinal))
                 .ToList();
             return appOptions;
         }

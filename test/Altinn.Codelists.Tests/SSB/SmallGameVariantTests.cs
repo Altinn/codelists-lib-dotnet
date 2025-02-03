@@ -27,6 +27,7 @@ public class SmallGameVariantTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(11);
         appOptions.Options.First(x => x.Value == "06").Label.Should().Be("Ravn");
         appOptions.Options.First(x => x.Value == "06").Description.Should().Be("Ravn");

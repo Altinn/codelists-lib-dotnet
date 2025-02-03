@@ -20,6 +20,7 @@ public class CountriesStatusCodelistProviderTests
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
+        Assert.NotNull(appOptions.Options);
         appOptions.Options.Should().HaveCount(252);
         appOptions.Options.First(x => x.Value == "NOR").Label.Should().Be("Norge");
     }
