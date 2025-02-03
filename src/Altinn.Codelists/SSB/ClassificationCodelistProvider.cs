@@ -97,9 +97,9 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
 
         // Parameters used added to Parameters collection in AppOptions for reference and documentation purposes.
         // Add well known parameters first.
-        appOptions.Parameters.TryAdd("id", _classificationId.ToString());
+        appOptions.Parameters.TryAdd("id", _classificationId.ToString(CultureInfo.InvariantCulture));
         appOptions.Parameters.TryAdd("variant", variant);
-        appOptions.Parameters.TryAdd("date", dateOnly.ToString());
+        appOptions.Parameters.TryAdd("date", dateOnly.ToString(CultureInfo.InvariantCulture));
         appOptions.Parameters.TryAdd("language", language);
         appOptions.Parameters.TryAdd("level", level);
         appOptions.Parameters.TryAdd("parentCode", parentCode);
@@ -180,7 +180,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         if (
             (string.IsNullOrEmpty(orderBy) && string.IsNullOrEmpty(orderByDesc))
             || appOptions?.Options == null
-            || !appOptions.Options.Any()
+            || appOptions.Options.Count == 0
         )
         {
             return appOptions ?? new AppOptions();
@@ -196,7 +196,9 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
 
         if (orderBy == "selectCodes" && !string.IsNullOrEmpty(selectCodes))
         {
-            appOptions.Options = appOptions.Options.OrderBy(x => selectCodes.IndexOf(x.Value)).ToList();
+            appOptions.Options = appOptions
+                .Options.OrderBy(x => selectCodes.IndexOf(x.Value, StringComparison.Ordinal))
+                .ToList();
             return appOptions;
         }
 

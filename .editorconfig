@@ -129,13 +129,13 @@ dotnet_diagnostic.CA1727.severity = suggestion
 dotnet_diagnostic.CA2254.severity = none
 
 # CA1822: Mark members as static
-dotnet_diagnostic.CA1822.severity = warning
+dotnet_diagnostic.CA1822.severity = suggestion
 
 # IDE0080: Remove unnecessary suppression operator
 dotnet_diagnostic.IDE0080.severity = error
 
 # CA1859: Use concrete types when possible for improved performance
-dotnet_diagnostic.CA1859.severity = warning
+dotnet_diagnostic.CA1859.severity = suggestion
 
 # CA1716: Rename namespace "" so that it no longer conflicts with the reserved language keyword 'Interface'
 # TODO: fixing this would be breaking

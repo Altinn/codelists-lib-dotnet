@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Globalization;
+using System.Net;
 using Altinn.Codelists.Extensions;
 using Microsoft.Extensions.Options;
 
@@ -46,7 +47,7 @@ public class ClassificationsHttpClient : IClassificationsClient
 
         // If no date is specified we use todays date to get the latest classification codes.
         DateOnly date = atDate ?? DateOnly.FromDateTime(DateTime.Today);
-        string selectDate = $"&date={date.ToString("yyyy-MM-dd")}";
+        string selectDate = $"&date={date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)}";
 
         // No level specified means all levels will be returned
         string selectLevel = level == string.Empty ? string.Empty : $"&selectLevel={level}";

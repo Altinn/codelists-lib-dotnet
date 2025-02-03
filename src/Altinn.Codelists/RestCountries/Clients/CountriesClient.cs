@@ -1,4 +1,3 @@
-using Altinn.Codelists.RestCountries;
 using Altinn.Codelists.RestCountries.Data;
 using Altinn.Codelists.RestCountries.Models;
 using Altinn.Codelists.Utilities;
@@ -49,12 +48,12 @@ public class CountriesClient : ICountryClient
             var subPredicate = PredicateBuilder.True<Country>();
             if (!string.IsNullOrEmpty(filter.Region))
             {
-                subPredicate = subPredicate.And(c => c.Region.Equals(filter.Region));
+                subPredicate = subPredicate.And(c => c.Region.Equals(filter.Region, StringComparison.Ordinal));
             }
 
             if (!string.IsNullOrEmpty(filter.SubRegion))
             {
-                subPredicate = subPredicate.And(c => c.SubRegion.Equals(filter.SubRegion));
+                subPredicate = subPredicate.And(c => c.SubRegion.Equals(filter.SubRegion, StringComparison.Ordinal));
             }
 
             predicate = predicate.Or(subPredicate);

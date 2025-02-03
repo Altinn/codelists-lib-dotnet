@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using System.Globalization;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Altinn.Codelists.SSB.Clients
 {
@@ -86,7 +87,7 @@ namespace Altinn.Codelists.SSB.Clients
             string selectCodes
         )
         {
-            return $"{classificationId}_{language}_{atDate?.ToString("yyyy-MM-dd")}_{level}_{variant}_{selectCodes}";
+            return $"{classificationId}_{language}_{atDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)}_{level}_{variant}_{selectCodes}";
         }
 
         // Expires the cache entry at midnight, to get potential new or removed entries.
