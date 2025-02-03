@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Altinn.Codelists.Kartverket.AdministrativeUnits.Models
 {
-    internal class Language
-    {
-    }
+    internal class Language { }
 }

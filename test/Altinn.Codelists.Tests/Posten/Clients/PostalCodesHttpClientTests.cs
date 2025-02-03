@@ -1,11 +1,11 @@
-﻿using Altinn.Codelists.Posten.Clients;
-using Altinn.Codelists.SSB.Clients;
-using Altinn.Codelists.SSB.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Altinn.Codelists.Posten.Clients;
+using Altinn.Codelists.SSB.Clients;
+using Altinn.Codelists.SSB.Models;
 
 namespace Altinn.Codelists.Tests.Posten.Clients;
 

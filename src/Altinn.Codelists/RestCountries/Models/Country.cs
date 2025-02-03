@@ -29,15 +29,15 @@ public class Country
     public string CountryCodeAlpha2 { get; set; } = "";
 
     /// <summary>
-    /// ISO 3166-1 alpha-3 – three-letter country codes which allow a better visual association 
+    /// ISO 3166-1 alpha-3 – three-letter country codes which allow a better visual association
     /// between the codes and the country names than the alpha-2 codes.
     /// </summary>
     [JsonPropertyName("ccn3")]
     public string CountryCodeNumeric3 { get; set; } = "";
 
     /// <summary>
-    /// ISO 3166-1 numeric – three-digit country codes which are identical to those developed and maintained 
-    /// by the United Nations Statistics Division, with the advantage of script (writing system) independence, 
+    /// ISO 3166-1 numeric – three-digit country codes which are identical to those developed and maintained
+    /// by the United Nations Statistics Division, with the advantage of script (writing system) independence,
     /// and hence useful for people or systems using non-Latin scripts.
     /// </summary>
     [JsonPropertyName("cca3")]
@@ -89,7 +89,7 @@ public class Country
     /// Name of country translated to various languages.
     /// </summary>
     [JsonPropertyName("translations")]
-    public Dictionary<string, Name> Translations {get; set;} = new Dictionary<string, Name>();
+    public Dictionary<string, Name> Translations { get; set; } = new Dictionary<string, Name>();
 
     /// <summary>
     /// Latitude and longitude

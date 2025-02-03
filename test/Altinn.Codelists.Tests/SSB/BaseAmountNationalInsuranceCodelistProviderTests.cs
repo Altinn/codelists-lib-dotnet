@@ -12,7 +12,11 @@ public class BaseAmountNationalInsuranceCodelistProviderTests
     public async Task GetAppOptionsAsync_ShouldReturnListOfCodes()
     {
         var httpClientMock = new ClassificationsHttpClientMock(Options.Create(new ClassificationSettings()));
-        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider("grunnbeløpfolketrygden", Classification.BaseAmountNationalInsurance, httpClientMock);
+        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider(
+            "grunnbeløpfolketrygden",
+            Classification.BaseAmountNationalInsurance,
+            httpClientMock
+        );
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 

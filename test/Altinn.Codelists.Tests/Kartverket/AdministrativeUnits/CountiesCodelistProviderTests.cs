@@ -9,7 +9,9 @@ public class CountiesCodelistProviderTests
     [Fact]
     public async Task GetAppOptionsAsync_ShouldReturnListOfCounties()
     {
-        var administrativeUnitsHttpClientMock = new AdministrativeUnitsHttpClientMock(Options.Create(new AdministrativeUnitsSettings()));
+        var administrativeUnitsHttpClientMock = new AdministrativeUnitsHttpClientMock(
+            Options.Create(new AdministrativeUnitsSettings())
+        );
         IAppOptionsProvider appOptionsProvider = new CountiesCodelistProvider(administrativeUnitsHttpClientMock);
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());

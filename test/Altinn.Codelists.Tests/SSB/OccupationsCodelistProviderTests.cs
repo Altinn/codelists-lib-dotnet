@@ -12,14 +12,21 @@ public class OccupationsCodelistProviderTests
     public async Task GetAppOptionsAsync_AllLevels_ShouldReturnListOfCodes()
     {
         var httpClientMock = new ClassificationsHttpClientMock(Options.Create(new ClassificationSettings()));
-        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider("yrker", Classification.Occupations, httpClientMock);
+        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider(
+            "yrker",
+            Classification.Occupations,
+            httpClientMock
+        );
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
         appOptions.Options.Should().HaveCount(582);
         appOptions.Options.First(x => x.Value == "2").Label.Should().Be("Akademiske yrker");
         appOptions.Options.First(x => x.Value == "25").Label.Should().Be("IKT-rådgivere");
-        appOptions.Options.First(x => x.Value == "251").Label.Should().Be("Programvare- og applikasjonsutviklere/analytikere");
+        appOptions
+            .Options.First(x => x.Value == "251")
+            .Label.Should()
+            .Be("Programvare- og applikasjonsutviklere/analytikere");
         appOptions.Options.First(x => x.Value == "2512").Label.Should().Be("Programvareutviklere");
     }
 
@@ -27,9 +34,16 @@ public class OccupationsCodelistProviderTests
     public async Task GetAppOptionsAsync_FirstLevelOnly_ShouldReturnListOfCodes()
     {
         var httpClientMock = new ClassificationsHttpClientMock(Options.Create(new ClassificationSettings()));
-        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider("yrker", Classification.Occupations, httpClientMock);
+        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider(
+            "yrker",
+            Classification.Occupations,
+            httpClientMock
+        );
 
-        var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>() { { "level", "1" } });
+        var appOptions = await appOptionsProvider.GetAppOptionsAsync(
+            "nb",
+            new Dictionary<string, string>() { { "level", "1" } }
+        );
 
         appOptions.Options.Should().HaveCount(10);
         appOptions.Options.First(x => x.Value == "0").Label.Should().Be("Militære yrker og uoppgitt");
@@ -39,7 +53,12 @@ public class OccupationsCodelistProviderTests
     public async Task GetAppOptionsAsync_DefaultFirstLevel_ShouldReturnListOfCodes()
     {
         var httpClientMock = new ClassificationsHttpClientMock(Options.Create(new ClassificationSettings()));
-        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider("næringsgruppering", Classification.IndustryGrouping, httpClientMock, new Dictionary<string, string>() { { "level", "1" } } );
+        IAppOptionsProvider appOptionsProvider = new ClassificationCodelistProvider(
+            "næringsgruppering",
+            Classification.IndustryGrouping,
+            httpClientMock,
+            new Dictionary<string, string>() { { "level", "1" } }
+        );
 
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 

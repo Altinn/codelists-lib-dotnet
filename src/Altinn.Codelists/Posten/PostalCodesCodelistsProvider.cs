@@ -29,7 +29,9 @@ namespace Altinn.Codelists.Posten
 
             var appOptions = new AppOptions
             {
-                Options = postalCodes.Select(x => new AppOption() { Value = x.PostCode, Label = x.PostalName }).ToList()
+                Options = postalCodes
+                    .Select(x => new AppOption() { Value = x.PostCode, Label = x.PostalName })
+                    .ToList(),
             };
 
             return appOptions;

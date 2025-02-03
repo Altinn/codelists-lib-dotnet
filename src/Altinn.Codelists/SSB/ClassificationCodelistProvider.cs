@@ -1,7 +1,7 @@
-﻿using Altinn.App.Core.Features;
+﻿using System.Globalization;
+using Altinn.App.Core.Features;
 using Altinn.App.Core.Models;
 using Altinn.Codelists.SSB.Models;
-using System.Globalization;
 
 namespace Altinn.Codelists.SSB;
 
@@ -18,18 +18,25 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
     /// <summary>
     /// Initializes a new instance of the <see cref="ClassificationCodelistProvider"/> class.
     /// </summary>
-    public ClassificationCodelistProvider(string id, Classification classification, IClassificationsClient classificationsClient, Dictionary<string, string>? defaultKeyValuePairs = null) : 
-        this(id, (int) classification, classificationsClient, defaultKeyValuePairs)
-    {
-    }
+    public ClassificationCodelistProvider(
+        string id,
+        Classification classification,
+        IClassificationsClient classificationsClient,
+        Dictionary<string, string>? defaultKeyValuePairs = null
+    )
+        : this(id, (int)classification, classificationsClient, defaultKeyValuePairs) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ClassificationCodelistProvider"/> class.
     /// </summary>
-    public ClassificationCodelistProvider(string id, Classification classification, IClassificationsClient classificationsClient, ClassificationOptions options, Dictionary<string, string>? defaultKeyValuePairs = null) :
-        this(id, (int)classification, classificationsClient, defaultKeyValuePairs, options)
-    {
-    }
+    public ClassificationCodelistProvider(
+        string id,
+        Classification classification,
+        IClassificationsClient classificationsClient,
+        ClassificationOptions options,
+        Dictionary<string, string>? defaultKeyValuePairs = null
+    )
+        : this(id, (int)classification, classificationsClient, defaultKeyValuePairs, options) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ClassificationCodelistProvider"/> class.
@@ -40,7 +47,13 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
     /// ''' ]]>
     /// ''' </remarks>
     /// </summary>
-    public ClassificationCodelistProvider(string id, int classificationId, IClassificationsClient classificationsClient, Dictionary<string, string>? defaultKeyValuePairs = null, ClassificationOptions? options = null)
+    public ClassificationCodelistProvider(
+        string id,
+        int classificationId,
+        IClassificationsClient classificationsClient,
+        Dictionary<string, string>? defaultKeyValuePairs = null,
+        ClassificationOptions? options = null
+    )
     {
         Id = id;
         _classificationId = classificationId;
@@ -58,20 +71,28 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         Dictionary<string, string> mergedKeyValuePairs = MergeDictionaries(_defaultKeyValuePairs, keyValuePairs);
 
         string? date = mergedKeyValuePairs.GetValueOrDefault("date");
-        DateOnly dateOnly = date == null ? DateOnly.FromDateTime(DateTime.Today) : DateOnly.Parse(date, CultureInfo.InvariantCulture);
+        DateOnly dateOnly =
+            date == null ? DateOnly.FromDateTime(DateTime.Today) : DateOnly.Parse(date, CultureInfo.InvariantCulture);
         string level = mergedKeyValuePairs.GetValueOrDefault("level") ?? string.Empty;
         string variant = mergedKeyValuePairs.GetValueOrDefault("variant") ?? string.Empty;
         string selectCodes = mergedKeyValuePairs.GetValueOrDefault("selectCodes") ?? string.Empty;
-        string orderBy = mergedKeyValuePairs.GetValueOrDefault("orderBy")  ?? string.Empty;
-        string orderByDesc = mergedKeyValuePairs.GetValueOrDefault("orderByDesc")  ?? string.Empty;
+        string orderBy = mergedKeyValuePairs.GetValueOrDefault("orderBy") ?? string.Empty;
+        string orderByDesc = mergedKeyValuePairs.GetValueOrDefault("orderByDesc") ?? string.Empty;
 
-        var classificationCode = await _classificationsClient.GetClassificationCodes(_classificationId, language, dateOnly, level, variant, selectCodes);
+        var classificationCode = await _classificationsClient.GetClassificationCodes(
+            _classificationId,
+            language,
+            dateOnly,
+            level,
+            variant,
+            selectCodes
+        );
 
         string parentCode = mergedKeyValuePairs.GetValueOrDefault("parentCode") ?? string.Empty;
 
         AppOptions appOptions = GetAppOptions(classificationCode, parentCode);
-          //Sorterings funksjon
-        appOptions = SortAppOptions(appOptions,orderBy,orderByDesc,selectCodes);
+        //Sorterings funksjon
+        appOptions = SortAppOptions(appOptions, orderBy, orderByDesc, selectCodes);
         appOptions.Parameters = new Dictionary<string, string>(mergedKeyValuePairs);
 
         // Parameters used added to Parameters collection in AppOptions for reference and documentation purposes.
@@ -84,7 +105,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
         appOptions.Parameters.TryAdd("parentCode", parentCode);
 
         // Add any other parameters.
-        List<string> knownKeys = new () { "id", "variant", "date", "language", "level", "parentCode" };
+        List<string> knownKeys = new() { "id", "variant", "date", "language", "level", "parentCode" };
         foreach (var keyValuePair in mergedKeyValuePairs)
         {
             if (!knownKeys.Contains(keyValuePair.Key))
@@ -103,22 +124,42 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
             // The api we use doesn't support filtering on partentCode,
             // hence we need to filter afterwards.
             Options = string.IsNullOrEmpty(parentCode)
-                ? classificationCode.Codes.Select(x => new AppOption() { Value = x.Code, Label = x.Name, Description =  _options.GetDescription(x), HelpText = _options.GetHelpText(x)}).ToList()
-                : classificationCode.Codes.Where(c => c.ParentCode == parentCode).Select(x => new AppOption() { Value = x.Code, Label = x.Name, Description = _options.GetDescription(x), HelpText = _options.GetHelpText(x) }).ToList()
+                ? classificationCode
+                    .Codes.Select(x => new AppOption()
+                    {
+                        Value = x.Code,
+                        Label = x.Name,
+                        Description = _options.GetDescription(x),
+                        HelpText = _options.GetHelpText(x),
+                    })
+                    .ToList()
+                : classificationCode
+                    .Codes.Where(c => c.ParentCode == parentCode)
+                    .Select(x => new AppOption()
+                    {
+                        Value = x.Code,
+                        Label = x.Name,
+                        Description = _options.GetDescription(x),
+                        HelpText = _options.GetHelpText(x),
+                    })
+                    .ToList(),
         };
-       
+
         return appOptions;
     }
 
-    private static Dictionary<string, string> MergeDictionaries(Dictionary<string, string> defaultValues, Dictionary<string, string> overridingValues)
+    private static Dictionary<string, string> MergeDictionaries(
+        Dictionary<string, string> defaultValues,
+        Dictionary<string, string> overridingValues
+    )
     {
-        var mergedDictionary = new Dictionary<string, string>(defaultValues); 
+        var mergedDictionary = new Dictionary<string, string>(defaultValues);
 
         foreach (var keyValuePair in overridingValues)
         {
             if (mergedDictionary.ContainsKey(keyValuePair.Key))
             {
-                mergedDictionary[keyValuePair.Key] = keyValuePair.Value; 
+                mergedDictionary[keyValuePair.Key] = keyValuePair.Value;
             }
             else
             {
@@ -128,9 +169,19 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
 
         return mergedDictionary;
     }
-    private static AppOptions SortAppOptions(AppOptions appOptions, string orderBy,string orderByDesc,string selectCodes)
+
+    private static AppOptions SortAppOptions(
+        AppOptions appOptions,
+        string orderBy,
+        string orderByDesc,
+        string selectCodes
+    )
     {
-        if ((string.IsNullOrEmpty(orderBy) && string.IsNullOrEmpty(orderByDesc)) ||  appOptions?.Options == null || !appOptions.Options.Any())
+        if (
+            (string.IsNullOrEmpty(orderBy) && string.IsNullOrEmpty(orderByDesc))
+            || appOptions?.Options == null
+            || !appOptions.Options.Any()
+        )
         {
             return appOptions ?? new AppOptions();
         }
@@ -140,7 +191,7 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
             { "name", x => x.Label },
             { "code", x => x.Value },
             { "description", x => x.Description ?? string.Empty },
-            { "helpText", x => x.HelpText ?? string.Empty }
+            { "helpText", x => x.HelpText ?? string.Empty },
         };
 
         if (orderBy == "selectCodes" && !string.IsNullOrEmpty(selectCodes))
@@ -149,16 +200,23 @@ public class ClassificationCodelistProvider : IAppOptionsProvider
             return appOptions;
         }
 
-        if (!string.IsNullOrEmpty(orderBy) && orderMappings.TryGetValue(orderBy, out Func<AppOption, object>? orderMapping) && orderMapping != null)
+        if (
+            !string.IsNullOrEmpty(orderBy)
+            && orderMappings.TryGetValue(orderBy, out Func<AppOption, object>? orderMapping)
+            && orderMapping != null
+        )
         {
             appOptions.Options = appOptions.Options.OrderBy(orderMapping).ToList();
         }
-        else if (!string.IsNullOrEmpty(orderByDesc) && orderMappings.TryGetValue(orderByDesc, out Func<AppOption, object>? orderMappingDesc) && orderMappingDesc != null)
+        else if (
+            !string.IsNullOrEmpty(orderByDesc)
+            && orderMappings.TryGetValue(orderByDesc, out Func<AppOption, object>? orderMappingDesc)
+            && orderMappingDesc != null
+        )
         {
             appOptions.Options = appOptions.Options.OrderByDescending(orderMappingDesc).ToList();
         }
-       
-        
+
         return appOptions;
     }
 }

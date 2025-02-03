@@ -9,8 +9,13 @@ public class ClassificationsHttpClientCachedTests
     [Fact]
     public async Task GetCodes_EmptyCache_ShouldReturnValues()
     {
-        var classificationsHttpClientMock = new ClassificationsHttpClientMock(Options.Create(new ClassificationSettings()));
-        var classificationsHttpClientCached = new ClassificationsHttpClientCached(classificationsHttpClientMock, new MemoryCache(new MemoryCacheOptions()));
+        var classificationsHttpClientMock = new ClassificationsHttpClientMock(
+            Options.Create(new ClassificationSettings())
+        );
+        var classificationsHttpClientCached = new ClassificationsHttpClientCached(
+            classificationsHttpClientMock,
+            new MemoryCache(new MemoryCacheOptions())
+        );
 
         var maritalStatus = await classificationsHttpClientCached.GetClassificationCodes(19);
 
@@ -20,8 +25,13 @@ public class ClassificationsHttpClientCachedTests
     [Fact]
     public async Task GetCounties_CacheFilled_ShouldReturnFromCache()
     {
-        var classificationsHttpClientMock = new ClassificationsHttpClientMock(Options.Create(new ClassificationSettings()));
-        var classificationsHttpClientCached = new ClassificationsHttpClientCached(classificationsHttpClientMock, new MemoryCache(new MemoryCacheOptions()));
+        var classificationsHttpClientMock = new ClassificationsHttpClientMock(
+            Options.Create(new ClassificationSettings())
+        );
+        var classificationsHttpClientCached = new ClassificationsHttpClientCached(
+            classificationsHttpClientMock,
+            new MemoryCache(new MemoryCacheOptions())
+        );
 
         // First request will fill the cache
         _ = await classificationsHttpClientCached.GetClassificationCodes(19);
@@ -30,15 +40,20 @@ public class ClassificationsHttpClientCachedTests
         var maritalStatus = await classificationsHttpClientCached.GetClassificationCodes(19);
 
         maritalStatus.Codes.Should().HaveCount(9);
-        classificationsHttpClientMock.HttpMessageHandlerMock.GetMatchCount(classificationsHttpClientMock.MockedMaritalStatusRequest).Should().Be(1);
+        classificationsHttpClientMock
+            .HttpMessageHandlerMock.GetMatchCount(classificationsHttpClientMock.MockedMaritalStatusRequest)
+            .Should()
+            .Be(1);
     }
 
     [Fact]
     public async Task GetCounties_CacheExpired_ShouldPopulateAgain()
     {
-        var classificationsHttpClientMock = new ClassificationsHttpClientMock(Options.Create(new ClassificationSettings()));
+        var classificationsHttpClientMock = new ClassificationsHttpClientMock(
+            Options.Create(new ClassificationSettings())
+        );
         var classificationsHttpClientCached = new ClassificationsHttpClientCached(
-            classificationsHttpClientMock, 
+            classificationsHttpClientMock,
             new MemoryCache(new MemoryCacheOptions()),
             () =>
             {
@@ -46,9 +61,10 @@ public class ClassificationsHttpClientCachedTests
                 return new MemoryCacheEntryOptions()
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddMilliseconds(100),
-                    Priority = CacheItemPriority.Normal
+                    Priority = CacheItemPriority.Normal,
                 };
-            });
+            }
+        );
 
         // First request will fill the cache
         await classificationsHttpClientCached.GetClassificationCodes(19);
@@ -60,6 +76,9 @@ public class ClassificationsHttpClientCachedTests
         var maritalStatusCodes = await classificationsHttpClientCached.GetClassificationCodes(19);
 
         maritalStatusCodes.Codes.Should().HaveCount(9);
-        classificationsHttpClientMock.HttpMessageHandlerMock.GetMatchCount(classificationsHttpClientMock.MockedMaritalStatusRequest).Should().Be(2);
+        classificationsHttpClientMock
+            .HttpMessageHandlerMock.GetMatchCount(classificationsHttpClientMock.MockedMaritalStatusRequest)
+            .Should()
+            .Be(2);
     }
 }

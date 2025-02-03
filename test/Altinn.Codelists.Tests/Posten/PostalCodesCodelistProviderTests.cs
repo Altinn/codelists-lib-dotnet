@@ -1,11 +1,11 @@
-﻿using Altinn.App.Core.Features;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Altinn.Codelists.Tests.Posten.Mocks;
+using Altinn.App.Core.Features;
 using Altinn.Codelists.Posten;
+using Altinn.Codelists.Tests.Posten.Mocks;
 
 namespace Altinn.Codelists.Tests.Posten
 {

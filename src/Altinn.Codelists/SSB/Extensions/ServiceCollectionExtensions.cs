@@ -22,7 +22,10 @@ public static class ServiceCollectionExtensions
         services.AddSSBClassificationCodelistProvider("næringsgruppering", Classification.IndustryGrouping);
         services.AddSSBClassificationCodelistProvider("yrker", Classification.Occupations);
         services.AddSSBClassificationCodelistProvider("sivilstand", Classification.MaritalStatus);
-        services.AddSSBClassificationCodelistProvider("grunnbeløpfolketrygden", Classification.BaseAmountNationalInsurance);
+        services.AddSSBClassificationCodelistProvider(
+            "grunnbeløpfolketrygden",
+            Classification.BaseAmountNationalInsurance
+        );
         services.AddSSBClassificationCodelistProvider("fylker", Classification.Counties);
         services.AddSSBClassificationCodelistProvider("kommuner", Classification.Municipalities);
         services.AddSSBClassificationCodelistProvider("land", Classification.Countries);
@@ -41,7 +44,7 @@ public static class ServiceCollectionExtensions
         {
             services.AddHttpClient<IClassificationsClient, ClassificationsHttpClient>();
             services.TryDecorate<IClassificationsClient, ClassificationsHttpClientCached>();
-        }        
+        }
     }
 
     /// <summary>
@@ -51,10 +54,20 @@ public static class ServiceCollectionExtensions
     /// <param name="id">The codelist id</param>
     /// <param name="classification">The <see cref="Classification"/> to return</param>
     /// <param name="defaultKeyValuePairs">Default set of key/value pairs to be used. Will be overriden by matching qyery parameters runtime.</param>
-    public static IServiceCollection AddSSBClassificationCodelistProvider(this IServiceCollection services, string id, Classification classification, Dictionary<string, string>? defaultKeyValuePairs = null)
+    public static IServiceCollection AddSSBClassificationCodelistProvider(
+        this IServiceCollection services,
+        string id,
+        Classification classification,
+        Dictionary<string, string>? defaultKeyValuePairs = null
+    )
     {
         EnsureBasicServicesRegistered(services);
-        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(id, classification, sp.GetRequiredService<IClassificationsClient>(), defaultKeyValuePairs));
+        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(
+            id,
+            classification,
+            sp.GetRequiredService<IClassificationsClient>(),
+            defaultKeyValuePairs
+        ));
 
         return services;
     }
@@ -68,10 +81,22 @@ public static class ServiceCollectionExtensions
     /// <param name="classification">The <see cref="Classification"/> to return</param>
     /// <param name="options"><see cref="ClassificationOptions"/> allowing control over how data maps from the source to the app options</param>
     /// <param name="defaultKeyValuePairs">Default set of key/value pairs to be used. Will be overriden by matching qyery parameters runtime.</param>
-    public static IServiceCollection AddSSBClassificationCodelistProvider(this IServiceCollection services, string id, Classification classification, ClassificationOptions options, Dictionary<string, string>? defaultKeyValuePairs = null)
+    public static IServiceCollection AddSSBClassificationCodelistProvider(
+        this IServiceCollection services,
+        string id,
+        Classification classification,
+        ClassificationOptions options,
+        Dictionary<string, string>? defaultKeyValuePairs = null
+    )
     {
         EnsureBasicServicesRegistered(services);
-        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(id, classification, sp.GetRequiredService<IClassificationsClient>(), options, defaultKeyValuePairs));
+        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(
+            id,
+            classification,
+            sp.GetRequiredService<IClassificationsClient>(),
+            options,
+            defaultKeyValuePairs
+        ));
 
         return services;
     }
@@ -84,10 +109,20 @@ public static class ServiceCollectionExtensions
     /// <param name="id">The codelist id</param>
     /// <param name="classificationId">The id of the classification to return</param>
     /// <param name="defaultKeyValuePairs">Default set of key/value pairs to be used. Will be overriden by matching qyery parameters runtime.</param>
-    public static IServiceCollection AddSSBClassificationCodelistProvider(this IServiceCollection services, string id, int classificationId, Dictionary<string, string>? defaultKeyValuePairs = null)
+    public static IServiceCollection AddSSBClassificationCodelistProvider(
+        this IServiceCollection services,
+        string id,
+        int classificationId,
+        Dictionary<string, string>? defaultKeyValuePairs = null
+    )
     {
         EnsureBasicServicesRegistered(services);
-        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(id, classificationId, sp.GetRequiredService<IClassificationsClient>(), defaultKeyValuePairs));
+        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(
+            id,
+            classificationId,
+            sp.GetRequiredService<IClassificationsClient>(),
+            defaultKeyValuePairs
+        ));
 
         return services;
     }
@@ -101,10 +136,22 @@ public static class ServiceCollectionExtensions
     /// <param name="classificationId">The id of the classification to return</param>
     /// <param name="options"><see cref="ClassificationOptions"/> allowing control over how data maps from the source to the app options</param>
     /// <param name="defaultKeyValuePairs">Default set of key/value pairs to be used. Will be overriden by matching qyery parameters runtime.</param>
-    public static IServiceCollection AddSSBClassificationCodelistProvider(this IServiceCollection services, string id, int classificationId, ClassificationOptions options, Dictionary<string, string>? defaultKeyValuePairs = null)
+    public static IServiceCollection AddSSBClassificationCodelistProvider(
+        this IServiceCollection services,
+        string id,
+        int classificationId,
+        ClassificationOptions options,
+        Dictionary<string, string>? defaultKeyValuePairs = null
+    )
     {
         EnsureBasicServicesRegistered(services);
-        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(id, classificationId, sp.GetRequiredService<IClassificationsClient>(), defaultKeyValuePairs, options));
+        services.AddTransient<IAppOptionsProvider>(sp => new ClassificationCodelistProvider(
+            id,
+            classificationId,
+            sp.GetRequiredService<IClassificationsClient>(),
+            defaultKeyValuePairs,
+            options
+        ));
 
         return services;
     }

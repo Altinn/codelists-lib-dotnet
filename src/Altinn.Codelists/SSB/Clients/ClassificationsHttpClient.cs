@@ -1,6 +1,6 @@
-﻿using Altinn.Codelists.Extensions;
+﻿using System.Net;
+using Altinn.Codelists.Extensions;
 using Microsoft.Extensions.Options;
-using System.Net;
 
 namespace Altinn.Codelists.SSB.Clients;
 
@@ -33,7 +33,14 @@ public class ClassificationsHttpClient : IClassificationsClient
     /// <param name="variant">The name of the variant to use instead of the original code list specified.</param>
     /// <param name="selectCodes">selectCodes is used to limit the result to codes that match the pattern given by selectCodes.</param>
     /// <returns></returns>
-    public async Task<ClassificationCodes> GetClassificationCodes(int classificationId, string language = "nb", DateOnly? atDate = null, string level = "", string variant = "", string selectCodes = "")
+    public async Task<ClassificationCodes> GetClassificationCodes(
+        int classificationId,
+        string language = "nb",
+        DateOnly? atDate = null,
+        string level = "",
+        string variant = "",
+        string selectCodes = ""
+    )
     {
         string selectLanguage = $"language={language}";
 
@@ -69,7 +76,7 @@ public class ClassificationsHttpClient : IClassificationsClient
         // If we get a 404 we try to get the codes in the fallback language (nb)
         else if (response.StatusCode == HttpStatusCode.NotFound && language != "nb")
         {
-            string fallbackQuery = BuildQuery("language=nb", selectDate, selectLevel, selectVariant,selectedCodes);
+            string fallbackQuery = BuildQuery("language=nb", selectDate, selectLevel, selectVariant, selectedCodes);
             var fallbackResponse = await _httpClient.GetAsync($"{url}{fallbackQuery}");
             if (fallbackResponse.IsSuccessStatusCode)
             {
@@ -82,7 +89,13 @@ public class ClassificationsHttpClient : IClassificationsClient
         return new ClassificationCodes();
     }
 
-    private static string BuildQuery(string selectLanguage, string selectDate, string selectLevel, string selectVariant, string selectCodes)
+    private static string BuildQuery(
+        string selectLanguage,
+        string selectDate,
+        string selectLevel,
+        string selectVariant,
+        string selectCodes
+    )
     {
         return $"?{selectLanguage}{selectDate}{selectLevel}{selectVariant}{selectCodes}";
     }

@@ -10,9 +10,7 @@ namespace Altinn.Codelists.SSB
         /// <summary>
         /// Initializes a new instance of the <see cref="ClassificationOptions"/> class.
         /// </summary>
-        public ClassificationOptions()
-        {
-        }
+        public ClassificationOptions() { }
 
         /// <summary>
         /// Maps the classification notes field to the description field.
@@ -33,7 +31,7 @@ namespace Altinn.Codelists.SSB
         /// </summary>
         public string GetDescription(ClassificationCode classificationCode)
         {
-            if(MapDescriptionFunc == null)
+            if (MapDescriptionFunc == null)
             {
                 return MapNotesToDescription ? classificationCode.Notes : string.Empty;
             }

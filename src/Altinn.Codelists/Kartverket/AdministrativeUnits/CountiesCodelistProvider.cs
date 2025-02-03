@@ -28,7 +28,7 @@ public class CountiesCodelistProvider : IAppOptionsProvider
 
         var appOptions = new AppOptions()
         {
-            Options = counties.Select(x => new AppOption() { Value = x.Number, Label = x.Name }).ToList()
+            Options = counties.Select(x => new AppOption() { Value = x.Number, Label = x.Name }).ToList(),
         };
 
         return appOptions;

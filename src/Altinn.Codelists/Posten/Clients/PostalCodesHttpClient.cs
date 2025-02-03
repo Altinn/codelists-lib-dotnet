@@ -1,10 +1,10 @@
-﻿using Altinn.Codelists.Kartverket.AdministrativeUnits.Models;
-using Altinn.Codelists.SSB.Clients;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Altinn.Codelists.Kartverket.AdministrativeUnits.Models;
+using Altinn.Codelists.SSB.Clients;
 
 namespace Altinn.Codelists.Posten.Clients;
 
