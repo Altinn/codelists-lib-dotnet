@@ -7,7 +7,7 @@ namespace Altinn.Codelists.Posten;
 /// <summary>
 /// Post codes and corresponding names for Norway.
 /// </summary>
-public class PostalCodesCodelistsProvider : IAppOptionsProvider
+internal sealed class PostalCodesCodelistsProvider : IAppOptionsProvider
 {
     private readonly IPostalCodesClient _postalCodesClient;
 

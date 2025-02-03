@@ -8,7 +8,7 @@ namespace Altinn.Codelists.SSB;
 /// <summary>
 /// Base class providing functions for getting codelist.
 /// </summary>
-public class ClassificationCodelistProvider : IAppOptionsProvider
+internal sealed class ClassificationCodelistProvider : IAppOptionsProvider
 {
     private readonly IClassificationsClient _classificationsClient;
     private readonly int _classificationId;

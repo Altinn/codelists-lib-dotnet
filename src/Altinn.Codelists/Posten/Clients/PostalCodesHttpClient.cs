@@ -23,8 +23,8 @@ public class PostalCodesHttpClient : IPostalCodesClient
     /// </summary>
     public async Task<List<PostalCodeRecord>> GetPostalCodes()
     {
-        var response = await _httpClient.GetAsync(_uri.ToString());
-        var responseStream = await response.Content.ReadAsStreamAsync();
+        using var response = await _httpClient.GetAsync(_uri.ToString());
+        await using var responseStream = await response.Content.ReadAsStreamAsync();
 
         var parser = new PostalCodesCsvParser(responseStream);
         List<PostalCodeRecord> result = await parser.Parse();

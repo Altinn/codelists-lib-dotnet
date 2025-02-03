@@ -6,7 +6,7 @@ namespace Altinn.Codelists.Kartverket.AdministrativeUnits;
 /// <summary>
 /// Provides a codelist for counties of Norway.
 /// </summary>
-public class CountiesCodelistProvider : IAppOptionsProvider
+internal sealed class CountiesCodelistProvider : IAppOptionsProvider
 {
     private readonly IAdministrativeUnitsClient _countiesHttpClient;
 

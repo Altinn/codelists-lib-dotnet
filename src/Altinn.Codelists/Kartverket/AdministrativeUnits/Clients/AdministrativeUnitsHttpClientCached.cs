@@ -7,7 +7,7 @@ namespace Altinn.Codelists.Kartverket.AdministrativeUnits.Clients;
 /// Http client to get information on norways offical administrative units for counties and municipalities.
 /// This class caches the information for performance reasons to avoid costly http calls.
 /// </summary>
-public class AdministrativeUnitsHttpClientCached : IAdministrativeUnitsClient
+internal sealed class AdministrativeUnitsHttpClientCached : IAdministrativeUnitsClient
 {
     private const string COUNTIES_CACHE_KEY = "counties";
     private const string MUNICIPALITIES_CACHE_KEY_BASE = "municipalities";

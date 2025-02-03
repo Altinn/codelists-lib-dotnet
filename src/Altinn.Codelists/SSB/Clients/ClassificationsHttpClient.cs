@@ -8,7 +8,7 @@ namespace Altinn.Codelists.SSB.Clients;
 /// <summary>
 /// Http client to get classification codes from SSB.
 /// </summary>
-public class ClassificationsHttpClient : IClassificationsClient
+internal sealed class ClassificationsHttpClient : IClassificationsClient
 {
     private readonly HttpClient _httpClient;
 
@@ -66,7 +66,7 @@ public class ClassificationsHttpClient : IClassificationsClient
         }
         string query = BuildQuery(selectLanguage, selectDate, selectLevel, selectVariant, selectedCodes);
 
-        var response = await _httpClient.GetAsync($"{url}{query}");
+        using var response = await _httpClient.GetAsync($"{url}{query}");
 
         if (response.IsSuccessStatusCode)
         {
@@ -78,7 +78,7 @@ public class ClassificationsHttpClient : IClassificationsClient
         else if (response.StatusCode == HttpStatusCode.NotFound && language != "nb")
         {
             string fallbackQuery = BuildQuery("language=nb", selectDate, selectLevel, selectVariant, selectedCodes);
-            var fallbackResponse = await _httpClient.GetAsync($"{url}{fallbackQuery}");
+            using var fallbackResponse = await _httpClient.GetAsync($"{url}{fallbackQuery}");
             if (fallbackResponse.IsSuccessStatusCode)
             {
                 var fallbackResponseJosn = await fallbackResponse.Content.ReadAsStringAsync();

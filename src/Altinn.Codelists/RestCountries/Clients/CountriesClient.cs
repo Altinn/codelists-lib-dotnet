@@ -9,7 +9,7 @@ namespace Altinn.Codelists.RestCountries.Clients;
 /// Note that this is not an http client but uses a static json embedded within
 /// this dll to resolve the the list of countries.
 /// </summary>
-public class CountriesClient : ICountryClient
+internal sealed class CountriesClient : ICountryClient
 {
     /// <summary>
     /// Sends a asynchronus internal request to get all the countries of the world.

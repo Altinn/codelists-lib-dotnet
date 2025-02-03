@@ -5,7 +5,7 @@ namespace Altinn.Codelists.Utilities;
 /// <summary>
 /// Simple predicate builder
 /// </summary>
-public static class PredicateBuilder
+internal static class PredicateBuilder
 {
     /// <summary>
     /// Creates a predicate that evaluates to true
