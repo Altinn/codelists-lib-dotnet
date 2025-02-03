@@ -1,6 +1,7 @@
 ﻿using Altinn.App.Core.Features;
 using Altinn.Codelists.SSB.Clients;
 using Altinn.Codelists.SSB.Models;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Altinn.Codelists.SSB.Extensions;
@@ -40,10 +41,13 @@ public static class ServiceCollectionExtensions
         services.AddMemoryCache();
         services.AddOptions<ClassificationSettings>();
 
-        if (services.All(x => x.ServiceType != typeof(IClassificationsClient)))
+        if (!services.Any(x => x.ServiceType == typeof(IClassificationsClient)))
         {
-            services.AddHttpClient<IClassificationsClient, ClassificationsHttpClient>();
-            services.TryDecorate<IClassificationsClient, ClassificationsHttpClientCached>();
+            services.AddHttpClient();
+            services.AddTransient<IClassificationsClient>(sp => new ClassificationsHttpClientCached(
+                ActivatorUtilities.CreateInstance<ClassificationsHttpClient>(sp),
+                sp.GetRequiredService<IMemoryCache>()
+            ));
         }
     }
 
@@ -54,6 +58,7 @@ public static class ServiceCollectionExtensions
     /// <param name="id">The codelist id</param>
     /// <param name="classification">The <see cref="Classification"/> to return</param>
     /// <param name="defaultKeyValuePairs">Default set of key/value pairs to be used. Will be overriden by matching qyery parameters runtime.</param>
+#pragma warning disable RS0026 // Do not add multiple public overloads with optional parameters
     public static IServiceCollection AddSSBClassificationCodelistProvider(
         this IServiceCollection services,
         string id,
@@ -136,7 +141,10 @@ public static class ServiceCollectionExtensions
     /// <param name="classificationId">The id of the classification to return</param>
     /// <param name="options"><see cref="ClassificationOptions"/> allowing control over how data maps from the source to the app options</param>
     /// <param name="defaultKeyValuePairs">Default set of key/value pairs to be used. Will be overriden by matching qyery parameters runtime.</param>
+
     public static IServiceCollection AddSSBClassificationCodelistProvider(
+#pragma warning restore RS0026 // Do not add multiple public overloads with optional parameters
+
         this IServiceCollection services,
         string id,
         int classificationId,

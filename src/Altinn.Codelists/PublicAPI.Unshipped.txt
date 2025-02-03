@@ -1,0 +1,160 @@
+#nullable enable
+Altinn.Codelists.Extensions.ServiceCollectionExtensions
+Altinn.Codelists.Kartverket.AdministrativeUnits.AdministrativeUnitsSettings
+Altinn.Codelists.Kartverket.AdministrativeUnits.AdministrativeUnitsSettings.AdministrativeUnitsSettings() -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.AdministrativeUnitsSettings.BaseApiUrl.get -> string!
+Altinn.Codelists.Kartverket.AdministrativeUnits.AdministrativeUnitsSettings.BaseApiUrl.set -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Extensions.ServiceCollectionExtensions
+Altinn.Codelists.Kartverket.AdministrativeUnits.IAdministrativeUnitsClient
+Altinn.Codelists.Kartverket.AdministrativeUnits.IAdministrativeUnitsClient.GetCounties() -> System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County!>!>!
+Altinn.Codelists.Kartverket.AdministrativeUnits.IAdministrativeUnitsClient.GetMunicipalities() -> System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality!>!>!
+Altinn.Codelists.Kartverket.AdministrativeUnits.IAdministrativeUnitsClient.GetMunicipalities(string! countyNumber) -> System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality!>!>!
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County.County(string! number, string! name) -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County.Municipalities.get -> System.Collections.Generic.List<Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality!>!
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County.Municipalities.set -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County.Name.get -> string!
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County.Name.set -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County.Number.get -> string!
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.County.Number.set -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality.Municipality(string! number, string! name, string! nameInNorwegian) -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality.Name.get -> string!
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality.Name.set -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality.NameInNorwegian.get -> string!
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality.NameInNorwegian.set -> void
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality.Number.get -> string!
+Altinn.Codelists.Kartverket.AdministrativeUnits.Models.Municipality.Number.set -> void
+Altinn.Codelists.Posten.Clients.PostalCodeRecord
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.Category.get -> string!
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.Category.init -> void
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.MunicipalityName.get -> string!
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.MunicipalityName.init -> void
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.MunicipalityNumber.get -> string!
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.MunicipalityNumber.init -> void
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.PostalCodeRecord(string! postCode, string! postalName, string! municipalityNumber, string! municipalityName, string! category) -> void
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.PostalName.get -> string!
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.PostalName.init -> void
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.PostCode.get -> string!
+Altinn.Codelists.Posten.Clients.PostalCodeRecord.PostCode.init -> void
+Altinn.Codelists.Posten.Clients.PostalCodesHttpClient
+Altinn.Codelists.Posten.Clients.PostalCodesHttpClient.GetPostalCodes() -> System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.Posten.Clients.PostalCodeRecord!>!>!
+Altinn.Codelists.Posten.Clients.PostalCodesHttpClient.PostalCodesHttpClient(System.Net.Http.HttpClient! httpClient) -> void
+Altinn.Codelists.Posten.IPostalCodesClient
+Altinn.Codelists.Posten.IPostalCodesClient.GetPostalCodes() -> System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.Posten.Clients.PostalCodeRecord!>!>!
+Altinn.Codelists.RestCountries.ICountryClient
+Altinn.Codelists.RestCountries.ICountryClient.GetCountries() -> System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.RestCountries.Models.Country!>!>!
+Altinn.Codelists.RestCountries.ICountryClient.GetCountries(System.Collections.Generic.IEnumerable<Altinn.Codelists.RestCountries.Models.Filter!>! filters) -> System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.RestCountries.Models.Country!>!>!
+Altinn.Codelists.RestCountries.Models.Country
+Altinn.Codelists.RestCountries.Models.Country.Country(Altinn.Codelists.RestCountries.Models.Name! name) -> void
+Altinn.Codelists.RestCountries.Models.Country.CountryCodeAlpha2.get -> string!
+Altinn.Codelists.RestCountries.Models.Country.CountryCodeAlpha2.set -> void
+Altinn.Codelists.RestCountries.Models.Country.CountryCodeAlpha3.get -> string!
+Altinn.Codelists.RestCountries.Models.Country.CountryCodeAlpha3.set -> void
+Altinn.Codelists.RestCountries.Models.Country.CountryCodeNumeric3.get -> string!
+Altinn.Codelists.RestCountries.Models.Country.CountryCodeNumeric3.set -> void
+Altinn.Codelists.RestCountries.Models.Country.Currencies.get -> System.Collections.Generic.Dictionary<string!, Altinn.Codelists.RestCountries.Models.Currency!>!
+Altinn.Codelists.RestCountries.Models.Country.Currencies.set -> void
+Altinn.Codelists.RestCountries.Models.Country.EmojiFlag.get -> string!
+Altinn.Codelists.RestCountries.Models.Country.EmojiFlag.set -> void
+Altinn.Codelists.RestCountries.Models.Country.Independent.get -> bool
+Altinn.Codelists.RestCountries.Models.Country.Independent.set -> void
+Altinn.Codelists.RestCountries.Models.Country.Languages.get -> System.Collections.Generic.Dictionary<string!, string!>!
+Altinn.Codelists.RestCountries.Models.Country.Languages.set -> void
+Altinn.Codelists.RestCountries.Models.Country.LatitudeLongitude.get -> decimal[]!
+Altinn.Codelists.RestCountries.Models.Country.LatitudeLongitude.set -> void
+Altinn.Codelists.RestCountries.Models.Country.Name.get -> Altinn.Codelists.RestCountries.Models.Name!
+Altinn.Codelists.RestCountries.Models.Country.Name.set -> void
+Altinn.Codelists.RestCountries.Models.Country.Region.get -> string!
+Altinn.Codelists.RestCountries.Models.Country.Region.set -> void
+Altinn.Codelists.RestCountries.Models.Country.Status.get -> string!
+Altinn.Codelists.RestCountries.Models.Country.Status.set -> void
+Altinn.Codelists.RestCountries.Models.Country.SubRegion.get -> string!
+Altinn.Codelists.RestCountries.Models.Country.SubRegion.set -> void
+Altinn.Codelists.RestCountries.Models.Country.TopLevelDomains.get -> string![]!
+Altinn.Codelists.RestCountries.Models.Country.TopLevelDomains.set -> void
+Altinn.Codelists.RestCountries.Models.Country.Translations.get -> System.Collections.Generic.Dictionary<string!, Altinn.Codelists.RestCountries.Models.Name!>!
+Altinn.Codelists.RestCountries.Models.Country.Translations.set -> void
+Altinn.Codelists.RestCountries.Models.Country.UnitedNationsMember.get -> bool
+Altinn.Codelists.RestCountries.Models.Country.UnitedNationsMember.set -> void
+Altinn.Codelists.RestCountries.Models.Currency
+Altinn.Codelists.RestCountries.Models.Currency.Currency(string! name, string! symbol) -> void
+Altinn.Codelists.RestCountries.Models.Currency.Name.get -> string!
+Altinn.Codelists.RestCountries.Models.Currency.Name.set -> void
+Altinn.Codelists.RestCountries.Models.Currency.Symbol.get -> string!
+Altinn.Codelists.RestCountries.Models.Currency.Symbol.set -> void
+Altinn.Codelists.RestCountries.Models.Filter
+Altinn.Codelists.RestCountries.Models.Filter.Filter() -> void
+Altinn.Codelists.RestCountries.Models.Filter.Region.get -> string?
+Altinn.Codelists.RestCountries.Models.Filter.Region.set -> void
+Altinn.Codelists.RestCountries.Models.Filter.SubRegion.get -> string?
+Altinn.Codelists.RestCountries.Models.Filter.SubRegion.set -> void
+Altinn.Codelists.RestCountries.Models.Name
+Altinn.Codelists.RestCountries.Models.Name.Common.get -> string!
+Altinn.Codelists.RestCountries.Models.Name.Common.set -> void
+Altinn.Codelists.RestCountries.Models.Name.Name(string! common, string! official) -> void
+Altinn.Codelists.RestCountries.Models.Name.Official.get -> string!
+Altinn.Codelists.RestCountries.Models.Name.Official.set -> void
+Altinn.Codelists.SSB.ClassificationOptions
+Altinn.Codelists.SSB.ClassificationOptions.ClassificationOptions() -> void
+Altinn.Codelists.SSB.ClassificationOptions.GetDescription(Altinn.Codelists.SSB.Clients.ClassificationCode! classificationCode) -> string!
+Altinn.Codelists.SSB.ClassificationOptions.GetHelpText(Altinn.Codelists.SSB.Clients.ClassificationCode! classificationCode) -> string!
+Altinn.Codelists.SSB.ClassificationOptions.MapDescriptionFunc.get -> System.Func<Altinn.Codelists.SSB.Clients.ClassificationCode!, string!>?
+Altinn.Codelists.SSB.ClassificationOptions.MapDescriptionFunc.set -> void
+Altinn.Codelists.SSB.ClassificationOptions.MapHelpTextFunc.get -> System.Func<Altinn.Codelists.SSB.Clients.ClassificationCode!, string!>?
+Altinn.Codelists.SSB.ClassificationOptions.MapHelpTextFunc.set -> void
+Altinn.Codelists.SSB.ClassificationOptions.MapNotesToDescription.get -> bool
+Altinn.Codelists.SSB.ClassificationOptions.MapNotesToDescription.set -> void
+Altinn.Codelists.SSB.ClassificationOptions.MapNotesToHelpText.get -> bool
+Altinn.Codelists.SSB.ClassificationOptions.MapNotesToHelpText.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode
+Altinn.Codelists.SSB.Clients.ClassificationCode.ClassificationCode(string! code, string! name, string! level) -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.Code.get -> string!
+Altinn.Codelists.SSB.Clients.ClassificationCode.Code.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.Level.get -> string!
+Altinn.Codelists.SSB.Clients.ClassificationCode.Level.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.Name.get -> string!
+Altinn.Codelists.SSB.Clients.ClassificationCode.Name.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.Notes.get -> string!
+Altinn.Codelists.SSB.Clients.ClassificationCode.Notes.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.ParentCode.get -> string?
+Altinn.Codelists.SSB.Clients.ClassificationCode.ParentCode.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.PresentationName.get -> string!
+Altinn.Codelists.SSB.Clients.ClassificationCode.PresentationName.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.ShortName.get -> string!
+Altinn.Codelists.SSB.Clients.ClassificationCode.ShortName.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidFrom.get -> System.DateTime?
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidFrom.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidFromInRequestedRange.get -> System.DateTime?
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidFromInRequestedRange.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidTo.get -> System.DateTime?
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidTo.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidToInRequestedRange.get -> System.DateTime?
+Altinn.Codelists.SSB.Clients.ClassificationCode.ValidToInRequestedRange.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationCodes
+Altinn.Codelists.SSB.Clients.ClassificationCodes.ClassificationCodes() -> void
+Altinn.Codelists.SSB.Clients.ClassificationCodes.Codes.get -> System.Collections.Generic.List<Altinn.Codelists.SSB.Clients.ClassificationCode!>!
+Altinn.Codelists.SSB.Clients.ClassificationCodes.Codes.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationSettings
+Altinn.Codelists.SSB.Clients.ClassificationSettings.BaseApiUrl.get -> string!
+Altinn.Codelists.SSB.Clients.ClassificationSettings.BaseApiUrl.set -> void
+Altinn.Codelists.SSB.Clients.ClassificationSettings.ClassificationSettings() -> void
+Altinn.Codelists.SSB.Extensions.ServiceCollectionExtensions
+Altinn.Codelists.SSB.IClassificationsClient
+Altinn.Codelists.SSB.IClassificationsClient.GetClassificationCodes(int classificationId, string! language = "nb", System.DateOnly? atDate = null, string! level = "", string! variant = "", string! selectCodes = "") -> System.Threading.Tasks.Task<Altinn.Codelists.SSB.Clients.ClassificationCodes!>!
+Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.BaseAmountNationalInsurance = 20 -> Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.Counties = 104 -> Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.Countries = 552 -> Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.IndustryGrouping = 6 -> Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.MaritalStatus = 19 -> Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.Municipalities = 131 -> Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.Occupations = 7 -> Altinn.Codelists.SSB.Models.Classification
+Altinn.Codelists.SSB.Models.Classification.Sex = 2 -> Altinn.Codelists.SSB.Models.Classification
+static Altinn.Codelists.Extensions.ServiceCollectionExtensions.AddAltinnCodelists(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Altinn.Codelists.Kartverket.AdministrativeUnits.Extensions.ServiceCollectionExtensions.AddKartverketAdministrativeUnits(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Altinn.Codelists.SSB.Extensions.ServiceCollectionExtensions.AddSSBClassificationCodelistProvider(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! id, Altinn.Codelists.SSB.Models.Classification classification, Altinn.Codelists.SSB.ClassificationOptions! options, System.Collections.Generic.Dictionary<string!, string!>? defaultKeyValuePairs = null) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Altinn.Codelists.SSB.Extensions.ServiceCollectionExtensions.AddSSBClassificationCodelistProvider(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! id, Altinn.Codelists.SSB.Models.Classification classification, System.Collections.Generic.Dictionary<string!, string!>? defaultKeyValuePairs = null) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Altinn.Codelists.SSB.Extensions.ServiceCollectionExtensions.AddSSBClassificationCodelistProvider(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! id, int classificationId, Altinn.Codelists.SSB.ClassificationOptions! options, System.Collections.Generic.Dictionary<string!, string!>? defaultKeyValuePairs = null) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Altinn.Codelists.SSB.Extensions.ServiceCollectionExtensions.AddSSBClassificationCodelistProvider(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! id, int classificationId, System.Collections.Generic.Dictionary<string!, string!>? defaultKeyValuePairs = null) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Altinn.Codelists.SSB.Extensions.ServiceCollectionExtensions.AddSSBClassifications(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
