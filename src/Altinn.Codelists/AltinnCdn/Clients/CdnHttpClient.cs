@@ -18,10 +18,10 @@ public class CdnHttpClient : ICdnHttpClient
     }
 
     /// <inheritdoc />
-    public async Task<AppOptions> GetCodeList(string orgName, string codeListId, string version, string language)
+    public async Task<List<AppOption>> GetCodeList(string orgName, string codeListId, string version, string language)
     {
         var url = $"https://altinncdn.no/orgs/{orgName}/codelists/{codeListId}/{version}/{language}.json";
         var response = await _httpClient.GetAsync(url);
-        return await response.Content.ReadAsAsync<AppOptions>();
+        return await response.Content.ReadAsAsync<List<AppOption>>();
     }
 }

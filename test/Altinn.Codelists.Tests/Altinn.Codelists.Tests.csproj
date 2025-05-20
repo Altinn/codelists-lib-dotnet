@@ -13,7 +13,7 @@
     <None Remove="Kartverket\AdministrativeUnits\Testdata\kommuner.json" />
     <None Remove="Posten\Testdata\Postnummerregister-ansi.txt" />
     <None Remove="SSB\Testdata\baseAmountNationalInsurance.json" />
-		<None Remove="SSB\Testdata\counties.json" />
+    <None Remove="SSB\Testdata\counties.json" />
     <None Remove="SSB\Testdata\countries.json" />
     <None Remove="SSB\Testdata\industryGrouping.json" />
     <None Remove="SSB\Testdata\maritalStatus.json" />
@@ -25,6 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="AltinnCdn\Testdata\numbers\en.json" />
+    <EmbeddedResource Include="AltinnCdn\Testdata\yesNoMaybe\en.json" />
     <EmbeddedResource Include="Kartverket\AdministrativeUnits\Testdata\fylke46_kommuner.json" />
     <EmbeddedResource Include="Kartverket\AdministrativeUnits\Testdata\fylker.json" />
     <EmbeddedResource Include="Kartverket\AdministrativeUnits\Testdata\kommuner.json" />

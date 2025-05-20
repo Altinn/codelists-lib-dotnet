@@ -10,7 +10,7 @@ namespace Altinn.Codelists.AltinnCdn;
 public class CdnCodelistProvider : IAppOptionsProvider
 {
     private readonly ICdnHttpClient _cdnHttpClient;
-    
+
     /// <summary>
     /// Initialises a new instance of the <see cref="CdnCodelistProvider"/> class.
     /// </summary>
@@ -18,17 +18,19 @@ public class CdnCodelistProvider : IAppOptionsProvider
     {
         _cdnHttpClient = cdnHttpClient;
     }
-    
+
     /// <inheritdoc />
     public string Id => "altinn-cdn";
-    
+
     /// <inheritdoc />
     public async Task<AppOptions> GetAppOptionsAsync(string language, Dictionary<string, string> keyValuePairs)
     {
         var orgName = keyValuePairs["orgName"];
         var codeListId = keyValuePairs["codeListId"];
         var version = keyValuePairs["version"];
-        
-        return await _cdnHttpClient.GetCodeList(orgName, codeListId, version, language);
+
+        var codeList = await _cdnHttpClient.GetCodeList(orgName, codeListId, version, language);
+
+        return new AppOptions { Options = codeList, Parameters = keyValuePairs };
     }
 }
