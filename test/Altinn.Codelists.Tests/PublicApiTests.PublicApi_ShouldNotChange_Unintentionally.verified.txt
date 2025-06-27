@@ -62,11 +62,6 @@ namespace Altinn.Codelists.Posten.Clients
         public string PostCode { get; init; }
         public string PostalName { get; init; }
     }
-    public class PostalCodesHttpClient : Altinn.Codelists.Posten.IPostalCodesClient
-    {
-        public PostalCodesHttpClient(System.Net.Http.HttpClient httpClient) { }
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.Posten.Clients.PostalCodeRecord>> GetPostalCodes() { }
-    }
 }
 namespace Altinn.Codelists.Posten
 {
