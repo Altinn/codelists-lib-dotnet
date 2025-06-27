@@ -6,6 +6,8 @@
     <Description>
       This class library holds extra codelists for Altinn Studio apps.
     </Description>
+    <!-- We don't care about transitive NuGet audit warnings for Altinn.App.Core minimum version -->
+    <NuGetAuditMode>direct</NuGetAuditMode>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-		<!-- This defines the minimum required version of Altinn.App.Core and should not be bumped unless new features require it.-->
+		<!-- This defines the minimum required version of Altinn.App.Core and should not be bumped unless new features require it. -->
     <PackageReference Include="Altinn.App.Core" VersionOverride="8.0.0" />
   </ItemGroup>
 </Project>
