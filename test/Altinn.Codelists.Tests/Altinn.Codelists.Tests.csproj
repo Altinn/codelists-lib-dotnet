@@ -53,6 +53,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="PublicApiGenerator" />
+    <PackageReference Include="Verify.Xunit" />
   </ItemGroup>
 
   <ItemGroup>
