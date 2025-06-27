@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install dotnet6
+      - name: Install dotnet
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |

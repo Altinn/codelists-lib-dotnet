@@ -141,7 +141,6 @@ public static class ServiceCollectionExtensions
     /// <param name="classificationId">The id of the classification to return</param>
     /// <param name="options"><see cref="ClassificationOptions"/> allowing control over how data maps from the source to the app options</param>
     /// <param name="defaultKeyValuePairs">Default set of key/value pairs to be used. Will be overriden by matching qyery parameters runtime.</param>
-
     public static IServiceCollection AddSSBClassificationCodelistProvider(
 #pragma warning restore RS0026 // Do not add multiple public overloads with optional parameters
 
