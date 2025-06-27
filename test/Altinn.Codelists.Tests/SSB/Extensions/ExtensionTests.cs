@@ -20,9 +20,9 @@ public class ExtensionTests
         IEnumerable<IClassificationsClient> classificationsClients =
             serviceProvider.GetServices<IClassificationsClient>();
 
-        classificationsClients.Should().HaveCount(1);
+        Assert.Single(classificationsClients);
 
         var optionsProviders = serviceProvider.GetServices<IAppOptionsProvider>();
-        optionsProviders.Should().HaveCount(2);
+        Assert.Equal(2, optionsProviders.Count());
     }
 }

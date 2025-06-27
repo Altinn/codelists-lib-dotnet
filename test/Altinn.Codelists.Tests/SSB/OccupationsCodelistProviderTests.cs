@@ -21,14 +21,14 @@ public class OccupationsCodelistProviderTests
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
         Assert.NotNull(appOptions.Options);
-        appOptions.Options.Should().HaveCount(582);
-        appOptions.Options.First(x => x.Value == "2").Label.Should().Be("Akademiske yrker");
-        appOptions.Options.First(x => x.Value == "25").Label.Should().Be("IKT-rådgivere");
-        appOptions
-            .Options.First(x => x.Value == "251")
-            .Label.Should()
-            .Be("Programvare- og applikasjonsutviklere/analytikere");
-        appOptions.Options.First(x => x.Value == "2512").Label.Should().Be("Programvareutviklere");
+        Assert.Equal(582, appOptions.Options.Count);
+        Assert.Equal("Akademiske yrker", appOptions.Options.First(x => x.Value == "2").Label);
+        Assert.Equal("IKT-rådgivere", appOptions.Options.First(x => x.Value == "25").Label);
+        Assert.Equal(
+            "Programvare- og applikasjonsutviklere/analytikere",
+            appOptions.Options.First(x => x.Value == "251").Label
+        );
+        Assert.Equal("Programvareutviklere", appOptions.Options.First(x => x.Value == "2512").Label);
     }
 
     [Fact]
@@ -47,8 +47,8 @@ public class OccupationsCodelistProviderTests
         );
 
         Assert.NotNull(appOptions.Options);
-        appOptions.Options.Should().HaveCount(10);
-        appOptions.Options.First(x => x.Value == "0").Label.Should().Be("Militære yrker og uoppgitt");
+        Assert.Equal(10, appOptions.Options.Count);
+        Assert.Equal("Militære yrker og uoppgitt", appOptions.Options.First(x => x.Value == "0").Label);
     }
 
     [Fact]
@@ -65,7 +65,7 @@ public class OccupationsCodelistProviderTests
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
         Assert.NotNull(appOptions.Options);
-        appOptions.Options.Should().HaveCount(21);
-        appOptions.Options.First(x => x.Value == "A").Label.Should().Be("Jordbruk, skogbruk og fiske");
+        Assert.Equal(21, appOptions.Options.Count);
+        Assert.Equal("Jordbruk, skogbruk og fiske", appOptions.Options.First(x => x.Value == "A").Label);
     }
 }

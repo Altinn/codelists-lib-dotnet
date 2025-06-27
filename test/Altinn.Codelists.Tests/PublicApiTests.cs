@@ -1,5 +1,4 @@
 using PublicApiGenerator;
-using VerifyXunit;
 
 namespace Altinn.Codelists.Tests;
 
@@ -22,6 +21,6 @@ public class PublicApiTests
         var publicApi = assembly.GeneratePublicApi(new ApiGeneratorOptions { ExcludeAttributes = _excludedAttributes });
 
         // Assert
-        await Verifier.Verify(publicApi);
+        await Verify(publicApi);
     }
 }

@@ -15,7 +15,7 @@ public class AdministrativeUnitsClientTests
 
         var counties = await client.GetCounties();
 
-        counties.Should().HaveCountGreaterThan(2);
+        Assert.True(counties.Count > 2);
     }
 
     [Fact(Skip = "Disabled. This actually calls out to the api and is primarily used to test during development.")]
@@ -28,7 +28,7 @@ public class AdministrativeUnitsClientTests
 
         var municipalities = await client.GetMunicipalities();
 
-        municipalities.Should().HaveCountGreaterThan(2);
+        Assert.True(municipalities.Count > 2);
     }
 
     [Fact(Skip = "Disabled. This actually calls out to the api and is primarily used to test during development.")]
@@ -41,6 +41,6 @@ public class AdministrativeUnitsClientTests
 
         var municipalities = await client.GetMunicipalities("46");
 
-        municipalities.Should().HaveCountGreaterThan(2);
+        Assert.True(municipalities.Count > 2);
     }
 }

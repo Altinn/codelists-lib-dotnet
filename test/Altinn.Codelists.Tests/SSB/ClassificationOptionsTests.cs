@@ -10,10 +10,10 @@ public class ClassificationOptionsTests
     {
         var classificationOptions = new ClassificationOptions() { MapNotesToDescription = true };
 
-        classificationOptions
-            .GetDescription(new ClassificationCode("1", "Ja", "1") { Notes = "Test" })
-            .Should()
-            .Be("Test");
+        Assert.Equal(
+            "Test",
+            classificationOptions.GetDescription(new ClassificationCode("1", "Ja", "1") { Notes = "Test" })
+        );
     }
 
     [Fact]
@@ -21,7 +21,7 @@ public class ClassificationOptionsTests
     {
         var classificationOptions = new ClassificationOptions();
 
-        classificationOptions.GetDescription(new ClassificationCode("1", "Ja", "1")).Should().BeEmpty();
+        Assert.Empty(classificationOptions.GetDescription(new ClassificationCode("1", "Ja", "1")));
     }
 
     [Theory]
@@ -36,7 +36,7 @@ public class ClassificationOptionsTests
         };
         var classificationCode = new ClassificationCode("9112", "Renholdere i virksomheter", "4") { Notes = "Test" };
 
-        classificationOptions.GetDescription(classificationCode).Should().Be("Test");
+        Assert.Equal("Test", classificationOptions.GetDescription(classificationCode));
     }
 
     [Fact]
@@ -44,10 +44,10 @@ public class ClassificationOptionsTests
     {
         var classificationOptions = new ClassificationOptions() { MapNotesToDescription = true };
 
-        classificationOptions
-            .GetHelpText(new ClassificationCode("1", "Ja", "1") { Notes = "Test" })
-            .Should()
-            .Be("Test");
+        Assert.Equal(
+            "Test",
+            classificationOptions.GetHelpText(new ClassificationCode("1", "Ja", "1") { Notes = "Test" })
+        );
     }
 
     [Fact]
@@ -55,7 +55,7 @@ public class ClassificationOptionsTests
     {
         var classificationOptions = new ClassificationOptions();
 
-        classificationOptions.GetHelpText(new ClassificationCode("1", "Ja", "1")).Should().BeEmpty();
+        Assert.Empty(classificationOptions.GetHelpText(new ClassificationCode("1", "Ja", "1")));
     }
 
     [Theory]
@@ -70,6 +70,6 @@ public class ClassificationOptionsTests
         };
         var classificationCode = new ClassificationCode("9112", "Renholdere i virksomheter", "4") { Notes = "Test" };
 
-        classificationOptions.GetHelpText(classificationCode).Should().Be("Test");
+        Assert.Equal("Test", classificationOptions.GetHelpText(classificationCode));
     }
 }

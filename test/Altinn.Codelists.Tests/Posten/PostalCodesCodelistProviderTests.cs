@@ -15,7 +15,7 @@ public class PostalCodesCodelistProviderTests
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
         Assert.NotNull(appOptions.Options);
-        appOptions.Options.Should().HaveCount(5139);
-        appOptions.Options.First(x => x.Value == "6863").Label.Should().Be("LEIKANGER");
+        Assert.Equal(5139, appOptions.Options.Count);
+        Assert.Equal("LEIKANGER", appOptions.Options.First(x => x.Value == "6863").Label);
     }
 }

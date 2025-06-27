@@ -14,9 +14,7 @@ namespace Altinn.Codelists.Tests
             var serviceProvider = services.BuildServiceProvider();
             var appOptionsProviders = serviceProvider.GetServices<IAppOptionsProvider>().ToList<IAppOptionsProvider>();
 
-            ValidateIdsAreUnique(appOptionsProviders)
-                .Should()
-                .BeEmpty(because: $"there should be no codelist with the same id registered");
+            Assert.Empty(ValidateIdsAreUnique(appOptionsProviders));
         }
 
         public static string ValidateIdsAreUnique<T>(List<T> objects)

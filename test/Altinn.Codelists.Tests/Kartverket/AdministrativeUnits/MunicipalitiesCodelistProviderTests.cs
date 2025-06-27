@@ -17,9 +17,9 @@ public class MunicipalitiesCodelistProviderTests
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
         Assert.NotNull(appOptions.Options);
-        appOptions.Options.Should().HaveCount(356);
-        appOptions.Options.First(x => x.Value == "4640").Label.Should().Be("Sogndal");
-        appOptions.Options.First(x => x.Value == "1813").Label.Should().Be("Brønnøy");
+        Assert.Equal(356, appOptions.Options.Count);
+        Assert.Equal("Sogndal", appOptions.Options.First(x => x.Value == "4640").Label);
+        Assert.Equal("Brønnøy", appOptions.Options.First(x => x.Value == "1813").Label);
     }
 
     [Fact]
@@ -36,8 +36,8 @@ public class MunicipalitiesCodelistProviderTests
         );
 
         Assert.NotNull(appOptions.Options);
-        appOptions.Options.Should().HaveCount(43);
-        appOptions.Options.First(x => x.Value == "4640").Label.Should().Be("Sogndal");
-        appOptions.Options.FirstOrDefault(x => x.Value == "1813").Should().BeNull();
+        Assert.Equal(43, appOptions.Options.Count);
+        Assert.Equal("Sogndal", appOptions.Options.First(x => x.Value == "4640").Label);
+        Assert.Null(appOptions.Options.FirstOrDefault(x => x.Value == "1813"));
     }
 }

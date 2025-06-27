@@ -5,7 +5,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Altinn.App.Core" Version="8.6.4" />
-    <PackageVersion Include="FluentAssertions" Version="7.1.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageVersion Include="RichardSzalay.MockHttp" Version="7.0.0" />
     <PackageVersion Include="xunit" Version="2.9.3" />

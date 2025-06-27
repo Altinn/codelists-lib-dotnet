@@ -21,7 +21,7 @@ public class BaseAmountNationalInsuranceCodelistProviderTests
         var appOptions = await appOptionsProvider.GetAppOptionsAsync("nb", new Dictionary<string, string>());
 
         Assert.NotNull(appOptions.Options);
-        appOptions.Options.Should().HaveCount(32);
-        appOptions.Options.First(x => x.Value == "2022").Label.Should().Be("111 477 kroner");
+        Assert.Equal(32, appOptions.Options.Count);
+        Assert.Equal("111 477 kroner", appOptions.Options.First(x => x.Value == "2022").Label);
     }
 }

@@ -19,7 +19,7 @@ public class ClassificationsHttpClientCachedTests
 
         var maritalStatus = await classificationsHttpClientCached.GetClassificationCodes(19);
 
-        maritalStatus.Codes.Should().HaveCount(9);
+        Assert.Equal(9, maritalStatus.Codes.Count);
     }
 
     [Fact]
@@ -39,11 +39,13 @@ public class ClassificationsHttpClientCachedTests
         // Second request should not trigger another http request from the client
         var maritalStatus = await classificationsHttpClientCached.GetClassificationCodes(19);
 
-        maritalStatus.Codes.Should().HaveCount(9);
-        classificationsHttpClientMock
-            .HttpMessageHandlerMock.GetMatchCount(classificationsHttpClientMock.MockedMaritalStatusRequest)
-            .Should()
-            .Be(1);
+        Assert.Equal(9, maritalStatus.Codes.Count);
+        Assert.Equal(
+            1,
+            classificationsHttpClientMock.HttpMessageHandlerMock.GetMatchCount(
+                classificationsHttpClientMock.MockedMaritalStatusRequest
+            )
+        );
     }
 
     [Fact]
@@ -75,10 +77,12 @@ public class ClassificationsHttpClientCachedTests
         // This should trigger another http request and fill the cache again
         var maritalStatusCodes = await classificationsHttpClientCached.GetClassificationCodes(19);
 
-        maritalStatusCodes.Codes.Should().HaveCount(9);
-        classificationsHttpClientMock
-            .HttpMessageHandlerMock.GetMatchCount(classificationsHttpClientMock.MockedMaritalStatusRequest)
-            .Should()
-            .Be(2);
+        Assert.Equal(9, maritalStatusCodes.Codes.Count);
+        Assert.Equal(
+            2,
+            classificationsHttpClientMock.HttpMessageHandlerMock.GetMatchCount(
+                classificationsHttpClientMock.MockedMaritalStatusRequest
+            )
+        );
     }
 }

@@ -20,7 +20,7 @@ public class CountiesClientCachedTests
 
         var counties = await administrativeUnitsHttpClientCached.GetCounties();
 
-        counties.Should().HaveCount(11);
+        Assert.Equal(11, counties.Count);
     }
 
     [Fact]
@@ -40,11 +40,13 @@ public class CountiesClientCachedTests
         // Second request should not trigger another http request from the client
         var counties = await administrativeUnitsHttpClientCached.GetCounties();
 
-        counties.Should().HaveCount(11);
-        administrativeUnitsHttpClientMock
-            .HttpMessageHandlerMock.GetMatchCount(administrativeUnitsHttpClientMock.MockedCountiesRequest)
-            .Should()
-            .Be(1);
+        Assert.Equal(11, counties.Count);
+        Assert.Equal(
+            1,
+            administrativeUnitsHttpClientMock.HttpMessageHandlerMock.GetMatchCount(
+                administrativeUnitsHttpClientMock.MockedCountiesRequest
+            )
+        );
     }
 
     [Fact]
@@ -76,10 +78,12 @@ public class CountiesClientCachedTests
         // This should trigger another http request and fill the cache again
         var counties = await administrativeUnitsHttpClientCached.GetCounties();
 
-        counties.Should().HaveCount(11);
-        administrativeUnitsHttpClientMock
-            .HttpMessageHandlerMock.GetMatchCount(administrativeUnitsHttpClientMock.MockedCountiesRequest)
-            .Should()
-            .Be(2);
+        Assert.Equal(11, counties.Count);
+        Assert.Equal(
+            2,
+            administrativeUnitsHttpClientMock.HttpMessageHandlerMock.GetMatchCount(
+                administrativeUnitsHttpClientMock.MockedCountiesRequest
+            )
+        );
     }
 }

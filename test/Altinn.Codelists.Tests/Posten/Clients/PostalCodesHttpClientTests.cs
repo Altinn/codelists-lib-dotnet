@@ -18,6 +18,6 @@ public class PostalCodesHttpClientTests
 
         var postalCodes = await client.GetPostalCodes();
 
-        postalCodes.Count.Should().BeGreaterThan(3);
+        Assert.True(postalCodes.Count > 3);
     }
 }
