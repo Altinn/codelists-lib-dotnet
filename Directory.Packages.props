@@ -14,7 +14,7 @@
     <PackageVersion Include="CSharpier.MsBuild" Version="1.0.2" />
     <PackageVersion Include="MinVer" Version="6.0.0" />
     <PackageVersion Include="Nullable.Extended.Analyzer" Version="1.15.6581" />
-    <PackageVersion Include="PublicApiGenerator" Version="11.3.0" />
-    <PackageVersion Include="Verify.Xunit" Version="28.5.1" />
+    <PackageVersion Include="PublicApiGenerator" Version="11.4.6" />
+    <PackageVersion Include="Verify.Xunit" Version="30.4.0" />
   </ItemGroup>
 </Project>
