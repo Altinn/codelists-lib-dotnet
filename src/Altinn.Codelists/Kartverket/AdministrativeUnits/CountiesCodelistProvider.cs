@@ -6,20 +6,12 @@ namespace Altinn.Codelists.Kartverket.AdministrativeUnits;
 /// <summary>
 /// Provides a codelist for counties of Norway.
 /// </summary>
-internal sealed class CountiesCodelistProvider : IAppOptionsProvider
+internal sealed class CountiesCodelistProvider(IAdministrativeUnitsClient countiesHttpClient) : IAppOptionsProvider
 {
-    private readonly IAdministrativeUnitsClient _countiesHttpClient;
+    private readonly IAdministrativeUnitsClient _countiesHttpClient = countiesHttpClient;
 
     /// <inheritdoc/>
     public string Id => "fylker-kv";
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CountiesCodelistProvider"/> class.
-    /// </summary>
-    public CountiesCodelistProvider(IAdministrativeUnitsClient countiesHttpClient)
-    {
-        _countiesHttpClient = countiesHttpClient;
-    }
 
     /// <inheritdoc/>
     public async Task<AppOptions> GetAppOptionsAsync(string? language, Dictionary<string, string> keyValuePairs)

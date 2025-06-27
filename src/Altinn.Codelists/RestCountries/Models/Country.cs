@@ -5,21 +5,13 @@ namespace Altinn.Codelists.RestCountries.Models;
 /// <summary>
 /// Holds information of a country.
 /// </summary>
-public class Country
+public class Country(Name name)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Country"/> class.
-    /// </summary>
-    public Country(Name name)
-    {
-        Name = name;
-    }
-
     /// <summary>
     /// The name of the country (in english)
     /// </summary>
     [JsonPropertyName("name")]
-    public Name Name { get; set; }
+    public Name Name { get; set; } = name;
 
     /// <summary>
     /// ISO 3166-1 alpha-2 – two-letter country codes which are the most widely used of the three,

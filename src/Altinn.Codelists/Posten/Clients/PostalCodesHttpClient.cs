@@ -3,20 +3,10 @@
 /// <summary>
 /// Client for getting the offical list of post codes in Norway.
 /// </summary>
-public class PostalCodesHttpClient : IPostalCodesClient
+public class PostalCodesHttpClient(HttpClient httpClient) : IPostalCodesClient
 {
-    private readonly HttpClient _httpClient;
-    private readonly Uri _uri;
-
-    /// <summary>
-    /// Creates a instance of <see cref="PostalCodesHttpClient"/>
-    /// </summary>
-    /// <param name="httpClient"></param>
-    public PostalCodesHttpClient(HttpClient httpClient)
-    {
-        _httpClient = httpClient;
-        _uri = new Uri("https://www.bring.no/postnummerregister-ansi.txt");
-    }
+    private readonly HttpClient _httpClient = httpClient;
+    private readonly Uri _uri = new("https://www.bring.no/postnummerregister-ansi.txt");
 
     /// <summary>
     /// Gets all postal codes
