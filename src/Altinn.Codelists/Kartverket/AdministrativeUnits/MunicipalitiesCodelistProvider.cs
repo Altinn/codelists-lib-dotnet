@@ -10,7 +10,6 @@ namespace Altinn.Codelists.Kartverket.AdministrativeUnits;
 internal sealed class MunicipalitiesCodelistProvider(IAdministrativeUnitsClient _administrativeUnitsHttpClient)
     : IAppOptionsProvider
 {
-
     /// <inheritdoc/>
     public string Id => "kommuner-kv";
 
