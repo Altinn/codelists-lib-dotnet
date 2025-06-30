@@ -9,6 +9,7 @@ public class PublicApiTests
         "System.Runtime.CompilerServices.RefSafetyRulesAttribute",
         "System.Diagnostics.DebuggerNonUserCodeAttribute",
         "System.ComponentModel.EditorBrowsableAttribute",
+        "System.Runtime.CompilerServices.InternalsVisibleToAttribute",
     ];
 
     [Fact]
