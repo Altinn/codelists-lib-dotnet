@@ -7,10 +7,9 @@ namespace Altinn.Codelists.Kartverket.AdministrativeUnits;
 /// <summary>
 /// Provides a codelist for municipalities of Norway.
 /// </summary>
-internal sealed class MunicipalitiesCodelistProvider(IAdministrativeUnitsClient administrativeUnitsHttpClient)
+internal sealed class MunicipalitiesCodelistProvider(IAdministrativeUnitsClient _administrativeUnitsHttpClient)
     : IAppOptionsProvider
 {
-    private readonly IAdministrativeUnitsClient _administrativeUnitsHttpClient = administrativeUnitsHttpClient;
 
     /// <inheritdoc/>
     public string Id => "kommuner-kv";

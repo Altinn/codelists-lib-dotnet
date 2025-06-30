@@ -1,8 +1,7 @@
 ﻿namespace Altinn.Codelists.Posten.Clients;
 
-internal sealed class PostalCodesHttpClient(HttpClient httpClient) : IPostalCodesClient
+internal sealed class PostalCodesHttpClient(HttpClient _httpClient) : IPostalCodesClient
 {
-    private readonly HttpClient _httpClient = httpClient;
     private readonly Uri _uri = new("https://www.bring.no/postnummerregister-ansi.txt");
 
     public async Task<List<PostalCodeRecord>> GetPostalCodes()
