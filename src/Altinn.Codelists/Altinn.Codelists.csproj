@@ -20,4 +20,15 @@
 		<!-- This defines the minimum required version of Altinn.App.Core and should not be bumped unless new features require it. -->
     <PackageReference Include="Altinn.App.Core" VersionOverride="8.0.0" />
   </ItemGroup>
+
+  <Target Name="GenerateDependencyAssemblyAttributes" BeforeTargets="GetAssemblyAttributes">
+    <ItemGroup>
+      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition="'%(PackageReference.Identity)' != '' and '%(PackageReference.PrivateAssets)' != 'all'">
+        <_Parameter1>PackageReference.%(PackageReference.Identity)</_Parameter1>
+        <_Parameter2 Condition="'%(PackageReference.VersionOverride)' != ''">%(PackageReference.VersionOverride)</_Parameter2>
+        <_Parameter2 Condition="'%(PackageReference.VersionOverride)' == '' and '%(PackageReference.Version)' != ''">%(PackageReference.Version)</_Parameter2>
+        <_Parameter2 Condition="'%(PackageReference.VersionOverride)' == '' and '%(PackageReference.Version)' == ''">@(PackageVersion->WithMetadataValue('Include', '%(PackageReference.Identity)')->'%(Version)')</_Parameter2>
+      </AssemblyAttribute>
+    </ItemGroup>
+  </Target>
 </Project>
