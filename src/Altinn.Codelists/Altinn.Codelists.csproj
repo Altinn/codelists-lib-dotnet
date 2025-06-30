@@ -26,6 +26,7 @@
       <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition="'%(PackageReference.Identity)' != '' and '%(PackageReference.PrivateAssets)' != 'all'">
         <_Parameter1>PackageReference.%(PackageReference.Identity)</_Parameter1>
         <_Parameter2 Condition="'%(PackageReference.VersionOverride)' != ''">%(PackageReference.VersionOverride)</_Parameter2>
+        <_Parameter2 Condition="'%(PackageReference.VersionOverride)' == ''">%(PackageReference.Version)</_Parameter2>
       </AssemblyAttribute>
     </ItemGroup>
   </Target>
