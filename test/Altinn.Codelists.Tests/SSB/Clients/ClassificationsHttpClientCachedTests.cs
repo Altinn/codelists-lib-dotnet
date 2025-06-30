@@ -72,7 +72,7 @@ public class ClassificationsHttpClientCachedTests
         await classificationsHttpClientCached.GetClassificationCodes(19);
 
         // Wait for the cached entry to be evicted
-        Thread.Sleep(200);
+        await Task.Delay(200);
 
         // This should trigger another http request and fill the cache again
         var maritalStatusCodes = await classificationsHttpClientCached.GetClassificationCodes(19);

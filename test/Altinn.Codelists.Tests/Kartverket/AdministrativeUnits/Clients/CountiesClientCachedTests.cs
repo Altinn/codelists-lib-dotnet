@@ -73,7 +73,7 @@ public class CountiesClientCachedTests
         await administrativeUnitsHttpClientCached.GetCounties();
 
         // Wait for the cached entry to be evicted
-        Thread.Sleep(200);
+        await Task.Delay(200);
 
         // This should trigger another http request and fill the cache again
         var counties = await administrativeUnitsHttpClientCached.GetCounties();

@@ -27,7 +27,7 @@ public class UnitsCodelistProviderTests
 
         Assert.NotNull(appOptions.Options);
         Assert.Equal(7, appOptions.Options.Count);
-        Assert.Equal("kilogram", appOptions.Options.First().Label);
-        Assert.Equal("stykk", appOptions.Options.Last().Label);
+        Assert.Equal("kilogram", appOptions.Options[0].Label);
+        Assert.Equal("stykk", appOptions.Options[^1].Label);
     }
 }

@@ -4,10 +4,6 @@
 
   <ItemGroup>
     <PackageReference Include="MinVer" PrivateAssets="All" />
-    <PackageReference Include="Nullable.Extended.Analyzer">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
     <None Include="../../README.md" Link="README.md" Pack="true" PackagePath="/" />
     <None Include="../../LICENSE" Pack="true" PackagePath="/" />
   </ItemGroup>

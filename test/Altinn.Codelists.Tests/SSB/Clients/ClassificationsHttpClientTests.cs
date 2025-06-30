@@ -24,7 +24,7 @@ public class ClassificationsHttpClientTests
         var classificationCodes = await client.GetClassificationCodes(
             74,
             "nn",
-            DateOnly.FromDateTime(new DateTime(2023, 03, 01)),
+            new DateOnly(2023, 03, 01),
             "",
             "Hønsefugler, spurvefugler og due 2023-03  - variant av Klassifisering av småvilt 2017-04"
         );
