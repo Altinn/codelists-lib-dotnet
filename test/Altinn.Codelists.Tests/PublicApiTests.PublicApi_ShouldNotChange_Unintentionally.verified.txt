@@ -81,19 +81,16 @@ namespace Altinn.Codelists.Posten
         public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddPostenClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection services) { }
     }
 }
-namespace Altinn.Codelists.RestCounties
-{
-    public static class ServiceCollectionExtensions
-    {
-        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddRestCountriesClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection services) { }
-    }
-}
 namespace Altinn.Codelists.RestCountries
 {
     public interface ICountryClient
     {
         System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.RestCountries.Models.Country>> GetCountries();
         System.Threading.Tasks.Task<System.Collections.Generic.List<Altinn.Codelists.RestCountries.Models.Country>> GetCountries(System.Collections.Generic.IEnumerable<Altinn.Codelists.RestCountries.Models.Filter> filters);
+    }
+    public static class ServiceCollectionExtensions
+    {
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddRestCountriesClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection services) { }
     }
 }
 namespace Altinn.Codelists.RestCountries.Models

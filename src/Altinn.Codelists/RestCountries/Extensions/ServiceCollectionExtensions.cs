@@ -1,8 +1,7 @@
-﻿using Altinn.Codelists.RestCountries;
-using Altinn.Codelists.RestCountries.Clients;
+﻿using Altinn.Codelists.RestCountries.Clients;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Altinn.Codelists.RestCounties;
+namespace Altinn.Codelists.RestCountries;
 
 /// <summary>
 /// Extends the <see cref="IServiceCollection"/>.

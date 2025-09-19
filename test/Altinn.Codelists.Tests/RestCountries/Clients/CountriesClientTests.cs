@@ -1,5 +1,4 @@
-﻿using Altinn.Codelists.RestCounties;
-using Altinn.Codelists.RestCountries;
+﻿using Altinn.Codelists.RestCountries;
 using Altinn.Codelists.RestCountries.Models;
 using Microsoft.Extensions.DependencyInjection;
 
