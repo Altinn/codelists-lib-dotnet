@@ -1,5 +1,6 @@
 ﻿using Altinn.Codelists.RestCountries.Clients;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Altinn.Codelists.RestCountries;
 
@@ -13,8 +14,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddRestCountriesClient(this IServiceCollection services)
     {
-        services.AddHttpClient();
-        services.AddTransient<ICountryClient, CountriesClient>();
+        services.TryAddSingleton<ICountryClient, CountriesClient>();
 
         return services;
     }

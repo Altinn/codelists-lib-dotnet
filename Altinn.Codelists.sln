@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmarks", "benchmarks", "{8933131A-8610-46BF-A844-EA7BDEAABEC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altinn.Codelists.Benchmarks", "benchmarks\Altinn.Codelists.Benchmarks\Altinn.Codelists.Benchmarks.csproj", "{9A80B99F-F0A6-40FC-8A2D-33789E56EC37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,11 +30,18 @@ Global
 		{9EBD611F-86DA-4D9A-93F2-5DFDBAAA3490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EBD611F-86DA-4D9A-93F2-5DFDBAAA3490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EBD611F-86DA-4D9A-93F2-5DFDBAAA3490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A80B99F-F0A6-40FC-8A2D-33789E56EC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A80B99F-F0A6-40FC-8A2D-33789E56EC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A80B99F-F0A6-40FC-8A2D-33789E56EC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A80B99F-F0A6-40FC-8A2D-33789E56EC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1736ED5E-5025-4F87-9881-48A863054B17}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A80B99F-F0A6-40FC-8A2D-33789E56EC37} = {8933131A-8610-46BF-A844-EA7BDEAABEC2}
 	EndGlobalSection
 EndGlobal

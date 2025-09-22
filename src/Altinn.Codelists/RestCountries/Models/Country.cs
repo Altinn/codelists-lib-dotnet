@@ -7,6 +7,9 @@ namespace Altinn.Codelists.RestCountries.Models;
 /// </summary>
 public class Country(Name name)
 {
+    // TODO: make this model immutable
+    // Will clarify intended use and can improve perf
+
     /// <summary>
     /// The name of the country (in english)
     /// </summary>
@@ -100,4 +103,29 @@ public class Country(Name name)
     /// </summary>
     [JsonPropertyName("currencies")]
     public Dictionary<string, Currency> Currencies { get; set; } = new Dictionary<string, Currency>();
+
+    internal Country Clone()
+    {
+        return new Country(new Name(Name.Common, Name.Official))
+        {
+            CountryCodeAlpha2 = CountryCodeAlpha2,
+            CountryCodeNumeric3 = CountryCodeNumeric3,
+            CountryCodeAlpha3 = CountryCodeAlpha3,
+            Independent = Independent,
+            Status = Status,
+            UnitedNationsMember = UnitedNationsMember,
+            EmojiFlag = EmojiFlag,
+            Region = Region,
+            SubRegion = SubRegion,
+            Languages = new Dictionary<string, string>(Languages),
+            Translations = new Dictionary<string, Name>(
+                Translations.ToDictionary(kvp => kvp.Key, kvp => new Name(kvp.Value.Common, kvp.Value.Official))
+            ),
+            LatitudeLongitude = LatitudeLongitude.ToArray(),
+            TopLevelDomains = TopLevelDomains.ToArray(),
+            Currencies = new Dictionary<string, Currency>(
+                Currencies.ToDictionary(kvp => kvp.Key, kvp => new Currency(kvp.Value.Name, kvp.Value.Symbol))
+            ),
+        };
+    }
 }

@@ -7,6 +7,10 @@ namespace Altinn.Codelists.RestCountries;
 /// </summary>
 public interface ICountryClient
 {
+    // TODO: make client methods return immutable/readonly lists/enumerables
+    // If the caller has to modify, they can allocate themselves (this is probably not a common case)
+    // Will clarify intended use and can improve perf
+
     /// <summary>
     /// Get all the countries of the world.
     /// </summary>
