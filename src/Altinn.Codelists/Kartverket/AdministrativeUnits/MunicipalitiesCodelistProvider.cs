@@ -17,21 +17,24 @@ internal sealed class MunicipalitiesCodelistProvider(IAdministrativeUnitsClient 
     public async Task<AppOptions> GetAppOptionsAsync(string? language, Dictionary<string, string> keyValuePairs)
     {
         bool hasCountyParam = keyValuePairs.TryGetValue("fnr", out string? countyNumber);
-
-        List<Municipality> municipalities =
-            hasCountyParam && countyNumber != null
-                ? await _administrativeUnitsHttpClient.GetMunicipalities(countyNumber)
-                : await _administrativeUnitsHttpClient.GetMunicipalities();
+        bool isCountyNumberProvided = hasCountyParam && countyNumber != null;
+        List<Municipality> municipalities = isCountyNumberProvided
+            ? await _administrativeUnitsHttpClient.GetMunicipalities(countyNumber)
+            : await _administrativeUnitsHttpClient.GetMunicipalities();
 
         var appOptions = new AppOptions()
         {
+            // The Norwegian name is not part of the response for the /fylker endpoint, so we only use it when we call the /kommuner endpoint.
             Options = municipalities
-                .Select(x => new AppOption() { Value = x.Number, Label = x.NameInNorwegian })
+                .Select(x => new AppOption()
+                {
+                    Value = x.Number,
+                    Label = isCountyNumberProvided ? x.NameInNorwegian : x.Name,
+                })
                 .ToList(),
-            Parameters =
-                hasCountyParam && countyNumber != null
-                    ? new Dictionary<string, string?>() { { "fnr", countyNumber } }
-                    : new Dictionary<string, string?>(),
+            Parameters = isCountyNumberProvided
+                ? new Dictionary<string, string?>() { { "fnr", countyNumber } }
+                : new Dictionary<string, string?>(),
         };
 
         return appOptions;
