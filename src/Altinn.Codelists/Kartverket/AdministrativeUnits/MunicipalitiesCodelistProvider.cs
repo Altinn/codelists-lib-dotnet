@@ -25,7 +25,9 @@ internal sealed class MunicipalitiesCodelistProvider(IAdministrativeUnitsClient 
 
         var appOptions = new AppOptions()
         {
-            Options = municipalities.Select(x => new AppOption() { Value = x.Number, Label = x.Name }).ToList(),
+            Options = municipalities
+                .Select(x => new AppOption() { Value = x.Number, Label = x.NameInNorwegian })
+                .ToList(),
             Parameters =
                 hasCountyParam && countyNumber != null
                     ? new Dictionary<string, string?>() { { "fnr", countyNumber } }
