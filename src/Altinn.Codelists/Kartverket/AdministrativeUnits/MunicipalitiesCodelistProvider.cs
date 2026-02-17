@@ -29,7 +29,7 @@ internal sealed class MunicipalitiesCodelistProvider(IAdministrativeUnitsClient 
                 .Select(x => new AppOption()
                 {
                     Value = x.Number,
-                    Label = isCountyNumberProvided ? x.NameInNorwegian : x.Name,
+                    Label = isCountyNumberProvided ? x.Name : x.NameInNorwegian,
                 })
                 .ToList(),
             Parameters = isCountyNumberProvided
